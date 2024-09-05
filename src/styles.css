@@ -1,1 +1,95 @@
-/* You can add global styles to this file, and also import other style files */
+/*==================================
+* Author        : "Mr. Waoow"
+==================================== */
+
+:root {
+  --primary: #3E97FF;
+  --hov-primary: #3785df;
+  --soft-primary: #3e97ff27;
+  --secondary: #B0BBD5;
+  --hov-secondary: #9da9c4;
+  --soft-secondary: #B0BBD527;
+  --black: #2E2E2E;
+  --dark: #183B56;
+  --soft-dark: #183B5627;
+  --light: #F4F4F4;
+  --white: #FFFFFF;
+  --danger: #FF4B55;
+  --hard-danger: #df424a;
+  --success: #00C48C;
+  --font: 'Neo Sans Arabic', sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 16.74px;
+  color: var(--black);
+  background-color: var(--white);
+}
+
+section {
+  padding-top: 3rem;
+  height: 100vh;
+}
+
+h4,
+h5 {
+  font-weight: 500;
+  line-height: 28.8px;
+  color: var(--dark);
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--black);
+}
+
+/* responsive */
+@media (min-width: 576px) {
+
+  .container,
+  .container-sm {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 870px;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1250px;
+  }
+}

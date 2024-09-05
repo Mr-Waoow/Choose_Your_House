@@ -1,1 +1,91 @@
-<p>pre-step works!</p>
+<section class="sec1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mx-4">
+          <div class="ad">
+            <img src="./images/icon/Vocero.PNG" alt="ad" class="img-icon">
+            <span> {{'pre_step.ad' | translate}} </span>
+          </div>
+          <div class="description">
+            <h4> {{'pre_step.title' | translate}} </h4>
+            <p>
+              {{'pre_step.description' | translate}}
+            </p>
+            <ul>
+              <li *ngFor="let item of [1, 2, 3, 4]">
+                <span class="icon">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>
+                <span class="text"> {{'pre_step.props.' + item | translate}} </span>
+              </li>
+            </ul>
+            <select class="form-select" #selectLang (change)="switchLang(selectLang.value === 'English' ? 'en' : 'ar')">
+              <option *ngFor="let language of translate.getLangs()" [value]="language === 'en' ? 'English' : 'Arabic'">
+                {{ language === 'en' ? 'English' : 'Arabic' }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="ms-3">
+          <h5>
+            {{'pre_step.build' | translate}}
+          </h5>
+          <p>
+            {{'pre_step.build_description' | translate}}
+          </p>
+          <form action="get">
+            <button class="select-btn">
+              <div class="d-flex w-100 justify-content-between">
+                <img src="./images/icon/handmade.PNG" alt="handmade">
+                <span class="icon">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>
+              </div>
+              <h6>
+                {{'pre_step.hand_made' | translate}}
+              </h6>
+              <span class="text">
+                {{'pre_step.hand_made_description' | translate}}
+              </span>
+            </button>
+            <button class="select-btn">
+              <div class="d-flex w-100 justify-content-between">
+                <img src="./images/icon/ai.PNG" alt="ai">
+                <span class="icon">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </span>
+              </div>
+              <h6>
+                {{'pre_step.ai' | translate}}
+              </h6>
+              <span class="text">
+                {{'pre_step.ai_description' | translate}}
+              </span>
+            </button>
+            <div class="project-name">
+              <h5>
+                {{'pre_step.project_name' | translate}}
+              </h5>
+              <p>
+                {{'pre_step.project_name_description' | translate}}
+              </p>
+              <input type="text" class="form-control" placeholder="{{'pre_step.project_placeholder' | translate}}">
+            </div>
+            <button [routerLink]="['/Select-House']" routerLinkActive="router-link-active"  class="btn btn-primary">
+              {{'pre_step.submit' | translate}}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+{
+  "back": "Back",
+  "pre_step": {
+    "ad": "Advertising campaign setup",
+    "title": "Welcome to our platform for selecting residential real estate for construction",
+    "description": "Add your current customers to your new system to start the experience",
+    "props": {
+      "1": "Upload your logo and brand details",
+      "2": "Choose and personalize the fields required",
+      "3": "Pick a style and design your form's layout",
+      "4": "Setting up thank-you messages and next steps"
+    },
+    "build": "Steps to creating your campaign",
+    "build_description": "The selected method for creating the campaign message",
+    "hand_made": "Handmade creation",
+    "hand_made_description": "Create your request message manually and accurately. Choose your words carefully",
+    "ai": "AI creation",
+    "ai_description": "Create your request message using AI",
+    "project_name": "Name your project",
+    "project_name_description": "Your project name should be unique and clear",
+    "project_placeholder": "Proposed project name",
+    "submit": "Get started"
+  }
+}

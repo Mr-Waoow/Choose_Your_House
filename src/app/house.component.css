@@ -1,0 +1,40 @@
+.navbar-container {
+position: absolute;
+top: 10px;
+left: 0;
+width: 100%;
+}
+
+.back {
+  opacity: 0.6;
+}
+.exit .btn {
+  height: 26px;
+  width: 26px;
+  border: none;
+  background-color: var(--light);
+  color: var(--black);
+  border-radius: 7.11px;
+  font-size: 14px;
+  padding: 0;
+}
+
+
+.exit .btn * {
+  opacity: 0.6;
+  -o-transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.exit .btn:hover * {
+  opacity: 1;
+  color: var(--danger);
+}
+
+.exit .btn:active * {
+  opacity: 1;
+  color: var(--hard-danger);
+}

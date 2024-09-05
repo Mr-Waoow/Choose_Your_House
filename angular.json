@@ -38,8 +38,18 @@
               }
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "bundleName": "englishBootstrap"
+              },
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.rtl.min.css",
+                "bundleName": "arabicBootstrap"
+              },
+              {
+                "input": "src/styles.css",
+                "bundleName": "customStyles"
+              }
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
