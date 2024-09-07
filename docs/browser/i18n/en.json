@@ -1,0 +1,67 @@
+{
+  "language": "Choose your language",
+  "back": "Back",
+  "pre_step": {
+    "ad": "Advertising campaign setup",
+    "title": "Welcome to our platform for selecting residential real estate for construction",
+    "description": "Add your current customers to your new system to start the experience",
+    "props": {
+      "1": "Upload your logo and brand details",
+      "2": "Choose and personalize the fields required",
+      "3": "Pick a style and design your form's layout",
+      "4": "Setting up thank-you messages and next steps"
+    },
+    "build": "Steps to creating your campaign",
+    "build_description": "The selected method for creating the campaign message",
+    "hand_made": "Handmade creation",
+    "hand_made_description": "Create your request message manually and accurately. Choose your words carefully",
+    "ai": "AI creation",
+    "ai_description": "Create your request message using AI",
+    "project_name": "Name your project",
+    "project_name_description": "Your project name should be unique and clear",
+    "project_placeholder": "Proposed project name",
+    "submit": "Get started"
+  },
+  "selection": {
+    "title": "Choose your favorite place to live",
+    "description": "Choose your housing source, each step will complete the rest of the steps",
+    "location": {
+      "cairo": "Cairo",
+      "north_coast": "North Coast",
+      "dahab": "Dahab"
+    },
+    "button": "Get started",
+    "help": "We are here to help you choose your home easily and carefully",
+    "directe": "Click the \"Start\" button to begin the process, and follow the instructions to enter the campaign information",
+    "house_type": "Choose the type of house",
+    "house_type_description": "Choose the type of house, each step will complete the rest of the steps",
+    "types": {
+      "villa": "Villa",
+      "duplex_apartment": "Duplex apartment",
+      "apartment": "Residential apartment"
+    },
+    "next": "Next"
+  },
+  "prop": {
+    "title": "Write a description of your dream home",
+    "small_description": "A brief description of the house",
+    "description": "An expressive description of the house",
+    "button": "Next step",
+    "help": "Click the \"Start\" button to begin the process, to enter the house information",
+    "message": "Write the message text sent",
+    "message_description": "Name your campaign and the expected campaign send date",
+    "design": "House design",
+    "modern": "Modern design",
+    "modern_smart": "Modern and smart design",
+    "description_check": "Preview the house description",
+    "topic": "The topic"
+  },
+  "submission": {
+    "title": "Your Housing Message is Being Sent",
+    "description": "Please wait a few minutes",
+    "loading": "Sending...",
+    "success": "Your Message Has Been Sent Successfully",
+    "success_description": "Please wait a few minutes",
+    "exit": "Exit"
+  }
+}
