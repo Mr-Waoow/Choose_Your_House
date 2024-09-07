@@ -9197,20 +9197,20 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
     margin: 0 !important;
   }
   .submition,
-  .button.selectings {
+  .buttons {
     margin-top: 2rem !important;
   }
-  .button.selectings {
+  .buttons {
     gap: 10px !important;
     flex-direction: column !important;
     align-items: center !important;
   }
-  .button.selectings .home-button.selecting {
+  .buttons .home-button {
     width: 160px !important;
     height: 100px !important;
     padding: 10px !important;
   }
-  .home-button.selecting img {
+  .home-button img {
     width: 40px !important;
     height: 40px !important;
   }
