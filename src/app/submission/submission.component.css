@@ -1,0 +1,53 @@
+.container-content {
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.image,
+.done_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image {
+  width: 228PX;
+  height: 228PX;
+  border: 8.19px solid var(--soft-primary);
+  border-radius: 50%;
+  background-image: url('../../../public/images/icon/paper_plane.gif');
+}
+
+.done_image {
+  width: 258PX;
+  height: 258PX;
+  background-image: url('../../../public/images/icon/done.gif');
+}
+
+.loading {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.exit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exit a {
+  text-decoration: none;
+}

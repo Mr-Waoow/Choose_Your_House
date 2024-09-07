@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <div class="mx-4">
           <div class="ad">
-            <img src="./images/icon/Vocero.PNG" alt="ad" class="img-icon">
+            <img src="./images/icon/Vocero.png" alt="ad" class="img-icon">
             <span> {{'pre_step.ad' | translate}} </span>
           </div>
           <div class="description">
@@ -20,9 +20,12 @@
                 <span class="text"> {{'pre_step.props.' + item | translate}} </span>
               </li>
             </ul>
-            <select class="form-select" #selectLang (change)="switchLang(selectLang.value === 'English' ? 'en' : 'ar')">
-              <option *ngFor="let language of translate.getLangs()" [value]="language === 'en' ? 'English' : 'Arabic'">
-                {{ language === 'en' ? 'English' : 'Arabic' }}
+            <select class="form-select" #selectLang
+              (change)="this.sendLanguageToParent(selectLang.value === 'العربية' ? 'ar' : 'en')">
+              <option [value]="'language' | translate">{{'language' | translate}}</option>
+              <option *ngFor="let language of this.translateGetLangs"
+                [value]="language === 'ar' ? 'العربية' : 'English'">
+                {{ language === 'ar' ? 'العربية' : 'English' }}
               </option>
             </select>
           </div>
@@ -45,7 +48,7 @@
           <form action="get">
             <button class="select-btn">
               <div class="d-flex w-100 justify-content-between">
-                <img src="./images/icon/handmade.PNG" alt="handmade">
+                <img src="./images/icon/handmade.png" alt="handmade">
                 <span class="icon">
                   <fa-icon [icon]="faCheck"></fa-icon>
                 </span>
@@ -59,7 +62,7 @@
             </button>
             <button class="select-btn">
               <div class="d-flex w-100 justify-content-between">
-                <img src="./images/icon/ai.PNG" alt="ai">
+                <img src="./images/icon/ai.png" alt="ai">
                 <span class="icon">
                   <fa-icon [icon]="faCheck"></fa-icon>
                 </span>
@@ -80,9 +83,9 @@
               </p>
               <input type="text" class="form-control" placeholder="{{'pre_step.project_placeholder' | translate}}">
             </div>
-            <button [routerLink]="['/Select-House']" routerLinkActive="router-link-active"  class="btn btn-primary">
+            <a [routerLink]="['/Select-House']" routerLinkActive="router-link-active" class="btn btn-primary">
               {{'pre_step.submit' | translate}}
-            </button>
+            </a>
           </form>
         </div>
       </div>

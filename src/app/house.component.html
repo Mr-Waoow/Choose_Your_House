@@ -2,16 +2,18 @@
   <div class="container">
     <nav class="d-flex justify-content-between">
       <div *ngIf="routerLinkActive != 'Start'" class="back">
-        <button class="btn">
-          <fa-icon [icon]="faArrowRight"></fa-icon> <Span> {{"back" | translate}} </Span>
-        </button>
+        <a class="btn px-0">
+          <fa-icon *ngIf="cookieValue === 'ar'" [icon]="faArrowRight"></fa-icon>
+          <fa-icon *ngIf="cookieValue === 'en'" [icon]="faArrowLeft"></fa-icon>
+           <Span class="ms-1"> {{"back" | translate}} </Span>
+        </a>
       </div>
-      <div class="exit ms-auto">
-        <button class="btn">
+      <div class="exit {{routerLinkActive != 'Start' ? '' : 'ms-auto' }}">
+        <a class="btn">
           <fa-icon [icon]="faXmark"></fa-icon>
-        </button>
+        </a>
       </div>
     </nav>
   </div>
 </div>
-<router-outlet></router-outlet>
+<router-outlet ></router-outlet>

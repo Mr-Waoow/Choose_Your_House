@@ -1,0 +1,125 @@
+.container-content {
+  padding: 1rem 0;
+  align-items: start;
+}
+
+form.container-content {
+  padding-left: 1rem;
+  padding-right: 2rem;
+}
+
+.title {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  align-items: start;
+  padding: 1rem;
+  margin-bottom: 10px;
+}
+
+.ms-1-5 {
+  margin-right: 2.5rem;
+}
+
+h6 {
+  color: #615E83;
+}
+
+.text-dark {
+  color: var(--dark);
+}
+
+.title p {
+  margin-bottom: 20px;
+}
+
+.title.stars {
+  position: relative;
+  width: fit-content;
+  padding: 1.5rem 1rem 1rem 3rem;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.title.stars::before,
+.title.stars::after {
+  content: '';
+  position: absolute;
+  background-image: url(../../../public/images/icon/golden_star.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 13.88px;
+  height: 16.33px;
+}
+
+.title::before {
+  top: 0;
+  right: 0;
+}
+
+.title::after {
+  bottom: 0;
+  left: 0;
+}
+
+label,
+span {
+  color: var(--dark-gray);
+}
+
+.btn.btn-primary {
+  width: 164.35px;
+}
+
+input[type="text"] {
+  width: 55%;
+}
+
+.ql-formats {
+  border-left: 0.75px solid var(--soft-dark);
+  padding: 10px;
+  margin: 0 !important;
+}
+
+.ql-formats:last-of-type {
+  border-left: none;
+}
+
+.form-group.radio {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #FCFCFC;
+  border-radius: 10px;
+  border: 0.75px solid var(--soft-dark);
+  box-shadow: 0px 2px 7.2px -5px #94949433;
+  padding: 15px 10px;
+}
+
+.form-group.radio::before {
+  content: '';
+  position: absolute;
+  background-image: url(../../../public/images/icon/mail_.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 173px;
+  height: 130px;
+  top: -119px;
+  left: 0;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.radio-group span {
+  display: inline-flex;
+  gap: 3px;
+}
+
+span label {
+  color: var(--dark);
+}

@@ -1,1 +1,34 @@
-<p>submission works!</p>
+<section class="submission">
+  <div class="container">
+    <div class="d-none container-content">
+      <div class="title">
+        <h4>{{'submission.title' | translate}}</h4>
+        <p>{{'submission.description' | translate}}</p>
+      </div>
+      <div class="image"></div>
+      <div class="loading">
+        <label class="w-100 d-flex align-items-center justify-content-between mb-2" for="loadingBar">
+          <span>{{'submission.loading' | translate}}</span>
+          <span>10/100</span>
+        </label>
+        <p-progressBar id="loadingBar" [value]="10">
+          <ng-template pTemplate="content" let-value>
+            <span></span>
+          </ng-template>
+        </p-progressBar>
+      </div>
+    </div>
+    <div class="container-content ">
+      <div class="title">
+        <h4>{{'submission.success' | translate}}</h4>
+        <p>{{'submission.success_description' | translate}}</p>
+      </div>
+      <div class="done_image"></div>
+      <div class="exit">
+        <a class="btn btn-link">
+          {{'submission.exit' | translate}}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

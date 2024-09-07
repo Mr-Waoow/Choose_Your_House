@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { DataSharingService } from '../shared/data-sharing.service';
 
 @Component({
   selector: 'pre-step',
@@ -8,49 +8,23 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './pre-step.component.css',
 })
 export class PreStepComponent {
+  //Event emitter.
+  @Output() sendLang = new EventEmitter<any>();
+  translateGetLangs!: any[];
+
+  //Variables.
   faCheck = faCheck;
-  translate: any;
 
-  constructor(private translateService: TranslateService) {
-    translateService.addLangs(['ar', 'en']);
-    translateService.setDefaultLang('ar');
-  }
+  //Constructor.
+  constructor(private dataSharingService: DataSharingService) {}
 
+  //Lifecycle hook.
   ngOnInit(): void {
-    this.translate = this.translateService;
-    this.loadCssFile('ar');
-    this.setDirection('ar');
+    this.translateGetLangs = this.dataSharingService.getLanguages();
   }
 
-  switchLang(lang: string) {
-    this.translate.use(lang);
-    this.setDirection(lang);
-    this.loadCssFile(lang);
-  }
-  setDirection(lang: string): void {
-    const htmlTag = document.querySelector('html') as HTMLHtmlElement;
-    if (lang === 'ar') {
-      htmlTag.dir = 'rtl';
-      htmlTag.lang = 'ar';
-    } else {
-      htmlTag.dir = 'ltr';
-      htmlTag.lang = 'en';
-    }
-  }
-  loadCssFile(lang: string): void {
-    const headTag = document.querySelector('head') as HTMLHeadElement;
-    const englishCss = headTag.querySelector(
-      'link[href="englishBootstrap.css'
-    ) as HTMLLinkElement;
-    const arabicCss = headTag.querySelector(
-      'link[href="arabicBootstrap.css'
-    ) as HTMLLinkElement;
-    if (lang === 'ar') {
-      englishCss.disabled = true;
-      arabicCss.disabled = false;
-    } else {
-      arabicCss.disabled = true;
-      englishCss.disabled = false;
-    }
+  //Send Language to parent.
+  sendLanguageToParent(lang: string) {
+    this.dataSharingService.setChoosenLang(lang);
   }
 }
