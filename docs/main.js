@@ -49098,7 +49098,33 @@ var faCheck = {
   icon: [448, 512, [10003, 10004], "f00c", "M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"]
 };
 
-// src/app/shared/data-sharing.service.ts
+// src/app/shared/classes/methods.ts
+var Methods = class {
+  //Select button clicked.
+  selecteBtn(evt) {
+    const element = evt.currentTarget;
+    const elementParent = element.parentNode;
+    const targetElements = elementParent.getElementsByTagName("button");
+    this.removeClass(targetElements, 0, "active");
+    element.classList.add("active");
+    return true;
+  }
+  //Remove class from elements.
+  removeClass(targetElements, i = 0, className) {
+    const n = targetElements.length;
+    if (i < n) {
+      const currentElement = targetElements[i];
+      currentElement.classList.remove(className);
+      i++;
+      this.removeClass(targetElements, i, className);
+    } else {
+      return 0;
+    }
+    return 0;
+  }
+};
+
+// src/app/shared/services/data-sharing.service.ts
 var _DataSharingService = class _DataSharingService {
   constructor() {
     this.languagesSubject = new BehaviorSubject([]);
@@ -52608,15 +52634,45 @@ var FontAwesomeModule = _FontAwesomeModule;
   }], null, null);
 })();
 
+// src/app/shared/preloader/preloader.component.ts
+var _PreloaderComponent = class _PreloaderComponent {
+  constructor(renderer, elementRef) {
+    this.renderer = renderer;
+    this.elementRef = elementRef;
+  }
+  ngOnInit() {
+    window.setTimeout(() => this.fadeout(), 500);
+  }
+  fadeout() {
+    const element = this.elementRef.nativeElement;
+    this.renderer.setStyle(element, "opacity", "0");
+    this.renderer.setStyle(element, "display", "none");
+  }
+};
+_PreloaderComponent.\u0275fac = function PreloaderComponent_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _PreloaderComponent)(\u0275\u0275directiveInject(Renderer2), \u0275\u0275directiveInject(ElementRef));
+};
+_PreloaderComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _PreloaderComponent, selectors: [["preloader"]], decls: 5, vars: 0, consts: [[1, "preloader"], [1, "preloader-inner"], [1, "preloader-icon"]], template: function PreloaderComponent_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2);
+    \u0275\u0275element(3, "span")(4, "span");
+    \u0275\u0275elementEnd()()();
+  }
+}, styles: ["\n\n.preloader[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  z-index: 999999999;\n  width: 100%;\n  height: 100%;\n  background-color: #fff;\n  overflow: hidden;\n}\n.preloader-inner[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n}\n.preloader-icon[_ngcontent-%COMP%] {\n  width: 100px;\n  height: 100px;\n  display: inline-block;\n  padding: 0px;\n}\n.preloader-icon[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  position: absolute;\n  display: inline-block;\n  width: 100px;\n  height: 100px;\n  border-radius: 100%;\n  background-color: var(--primary);\n  -webkit-animation: _ngcontent-%COMP%_preloader-fx 1.6s linear infinite;\n  animation: _ngcontent-%COMP%_preloader-fx 1.6s linear infinite;\n}\n.preloader-icon[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]:last-child {\n  -webkit-animation-delay: -0.8s;\n  animation-delay: -0.8s;\n}\n@keyframes _ngcontent-%COMP%_preloader-fx {\n  0% {\n    -webkit-transform: scale(0, 0);\n    transform: scale(0, 0);\n    opacity: 0.5;\n  }\n  100% {\n    -webkit-transform: scale(1, 1);\n    transform: scale(1, 1);\n    opacity: 0;\n  }\n}\n@-webkit-keyframes _ngcontent-%COMP%_preloader-fx {\n  0% {\n    -webkit-transform: scale(0, 0);\n    opacity: 0.5;\n  }\n  100% {\n    -webkit-transform: scale(1, 1);\n    opacity: 0;\n  }\n}\n/*# sourceMappingURL=preloader.component.css.map */"] });
+var PreloaderComponent = _PreloaderComponent;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(PreloaderComponent, { className: "PreloaderComponent", filePath: "src\\app\\shared\\preloader\\preloader.component.ts", lineNumber: 8 });
+})();
+
 // src/app/pre-step/pre-step.component.ts
 var _c08 = () => [1, 2, 3, 4];
 var _c15 = () => ["/Select-House"];
 function PreStepComponent_li_18_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "li")(1, "span", 19);
-    \u0275\u0275element(2, "fa-icon", 20);
+    \u0275\u0275elementStart(0, "li")(1, "span", 16);
+    \u0275\u0275element(2, "fa-icon", 17);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "span", 21);
+    \u0275\u0275elementStart(3, "span", 18);
     \u0275\u0275text(4);
     \u0275\u0275pipe(5, "translate");
     \u0275\u0275elementEnd()();
@@ -52632,7 +52688,7 @@ function PreStepComponent_li_18_Template(rf, ctx) {
 }
 function PreStepComponent_option_25_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 11);
+    \u0275\u0275elementStart(0, "option", 10);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -52643,316 +52699,464 @@ function PreStepComponent_option_25_Template(rf, ctx) {
     \u0275\u0275textInterpolate1(" ", language_r5 === "ar" ? "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" : "English", " ");
   }
 }
+function PreStepComponent_div_58_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r6 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 22)(1, "h5");
+    \u0275\u0275text(2);
+    \u0275\u0275pipe(3, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(4, "p");
+    \u0275\u0275text(5);
+    \u0275\u0275pipe(6, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(7, "input", 23);
+    \u0275\u0275pipe(8, "translate");
+    \u0275\u0275twoWayListener("ngModelChange", function PreStepComponent_div_58_Template_input_ngModelChange_7_listener($event) {
+      \u0275\u0275restoreView(_r6);
+      const ctx_r2 = \u0275\u0275nextContext();
+      \u0275\u0275twoWayBindingSet(ctx_r2.text, $event) || (ctx_r2.text = $event);
+      return \u0275\u0275resetView($event);
+    });
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(3, 4, "pre_step.project_name"), " ");
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(6, 6, "pre_step.project_name_description"), " ");
+    \u0275\u0275advance(2);
+    \u0275\u0275propertyInterpolate("placeholder", \u0275\u0275pipeBind1(8, 8, "pre_step.project_placeholder"));
+    \u0275\u0275twoWayProperty("ngModel", ctx_r2.text);
+  }
+}
 var _PreStepComponent = class _PreStepComponent {
+  get text() {
+    return this._text;
+  }
+  set text(value) {
+    this._text = value;
+    if (this._text !== "") {
+      this.submitBtn?.removeAttribute("disabled");
+      this.submitBtn?.classList.add("active");
+    } else {
+      this.submitBtn?.setAttribute("disabled", "true");
+      this.submitBtn?.classList.remove("active");
+    }
+  }
   //Constructor.
   constructor(dataSharingService) {
     this.dataSharingService = dataSharingService;
     this.sendLang = new EventEmitter();
+    this.methods = new Methods();
     this.faCheck = faCheck;
+    this.selectBtnClicked = false;
+    this.submitBtn = null;
+    this._text = "";
   }
   //Lifecycle hook.
   ngOnInit() {
+    this.submitBtn = document.getElementById("submitBtn");
     this.translateGetLangs = this.dataSharingService.getLanguages();
   }
   //Send Language to parent.
   sendLanguageToParent(lang) {
     this.dataSharingService.setChoosenLang(lang);
   }
+  //Select button clicked.
+  selecteBtn(evt) {
+    this.selectBtnClicked = this.methods.selecteBtn(evt);
+  }
 };
 _PreStepComponent.\u0275fac = function PreStepComponent_Factory(__ngFactoryType__) {
   return new (__ngFactoryType__ || _PreStepComponent)(\u0275\u0275directiveInject(DataSharingService));
 };
-_PreStepComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _PreStepComponent, selectors: [["pre-step"]], outputs: { sendLang: "sendLang" }, decls: 72, vars: 52, consts: [["selectLang", ""], [1, "sec1"], [1, "container"], [1, "row"], [1, "col-md-12"], [1, "mx-4"], [1, "ad"], ["src", "./images/icon/Vocero.png", "alt", "ad", 1, "img-icon"], [1, "description"], [4, "ngFor", "ngForOf"], [1, "form-select", 3, "change"], [3, "value"], [3, "value", 4, "ngFor", "ngForOf"], [1, "sec2"], [1, "ms-3"], ["action", "get"], [1, "select-btn"], [1, "d-flex", "w-100", "justify-content-between"], ["src", "./images/icon/handmade.png", "alt", "handmade"], [1, "icon"], [3, "icon"], [1, "text"], ["src", "./images/icon/ai.png", "alt", "ai"], [1, "project-name"], ["type", "text", 1, "form-control", 3, "placeholder"], ["routerLinkActive", "router-link-active", 1, "btn", "btn-primary", 3, "routerLink"]], template: function PreStepComponent_Template(rf, ctx) {
+_PreStepComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _PreStepComponent, selectors: [["pre-step"]], outputs: { sendLang: "sendLang" }, decls: 62, vars: 44, consts: [["selectLang", ""], [1, "pre-step"], [1, "description"], [1, "container"], [1, "container-content"], [1, "title"], [1, "ad"], ["src", "./images/icon/Vocero.png", "alt", "title", 1, "img-icon"], [4, "ngFor", "ngForOf"], [1, "form-select", 3, "change"], [3, "value"], [3, "value", 4, "ngFor", "ngForOf"], [1, "form"], [1, "select-btn", "selecting", 3, "click"], [1, "d-flex", "w-100", "justify-content-between"], ["src", "./images/icon/handmade.png", "alt", "handmade"], [1, "icon"], [3, "icon"], [1, "text"], ["src", "./images/icon/ai.png", "alt", "ai"], ["class", "project-name", 4, "ngIf"], ["id", "submitBtn", "disabled", "", "type", "submit", "routerLinkActive", "router-link-active", 1, "btn", "btn-primary", 3, "routerLink"], [1, "project-name"], ["type", "text", "name", "project-name", 1, "form-control", 3, "ngModelChange", "ngModel", "placeholder"]], template: function PreStepComponent_Template(rf, ctx) {
   if (rf & 1) {
     const _r1 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "section", 1)(1, "div", 2)(2, "div", 3)(3, "div", 4)(4, "div", 5)(5, "div", 6);
-    \u0275\u0275element(6, "img", 7);
-    \u0275\u0275elementStart(7, "span");
-    \u0275\u0275text(8);
-    \u0275\u0275pipe(9, "translate");
+    \u0275\u0275element(0, "preloader");
+    \u0275\u0275elementStart(1, "section", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4)(5, "div", 5)(6, "div", 6);
+    \u0275\u0275element(7, "img", 7);
+    \u0275\u0275elementStart(8, "span");
+    \u0275\u0275text(9);
+    \u0275\u0275pipe(10, "translate");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(10, "div", 8)(11, "h4");
+    \u0275\u0275elementStart(11, "h4");
     \u0275\u0275text(12);
     \u0275\u0275pipe(13, "translate");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(14, "p");
     \u0275\u0275text(15);
     \u0275\u0275pipe(16, "translate");
-    \u0275\u0275elementEnd();
+    \u0275\u0275elementEnd()();
     \u0275\u0275elementStart(17, "ul");
-    \u0275\u0275template(18, PreStepComponent_li_18_Template, 6, 4, "li", 9);
+    \u0275\u0275template(18, PreStepComponent_li_18_Template, 6, 4, "li", 8);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(19, "select", 10, 0);
+    \u0275\u0275elementStart(19, "select", 9, 0);
     \u0275\u0275listener("change", function PreStepComponent_Template_select_change_19_listener() {
       \u0275\u0275restoreView(_r1);
       const selectLang_r4 = \u0275\u0275reference(20);
       return \u0275\u0275resetView(ctx.sendLanguageToParent(selectLang_r4.value === "\u0627\u0644\u0639\u0631\u0628\u064A\u0629" ? "ar" : "en"));
     });
-    \u0275\u0275elementStart(21, "option", 11);
+    \u0275\u0275elementStart(21, "option", 10);
     \u0275\u0275pipe(22, "translate");
     \u0275\u0275text(23);
     \u0275\u0275pipe(24, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(25, PreStepComponent_option_25_Template, 2, 2, "option", 12);
-    \u0275\u0275elementEnd()()()()()()();
-    \u0275\u0275elementStart(26, "section", 13)(27, "div", 2)(28, "div", 3)(29, "div", 4)(30, "div", 14)(31, "h5");
-    \u0275\u0275text(32);
-    \u0275\u0275pipe(33, "translate");
+    \u0275\u0275template(25, PreStepComponent_option_25_Template, 2, 2, "option", 11);
+    \u0275\u0275elementEnd()()()();
+    \u0275\u0275elementStart(26, "div", 12)(27, "div", 3)(28, "form", 4)(29, "div", 5)(30, "h5");
+    \u0275\u0275text(31);
+    \u0275\u0275pipe(32, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(34, "p");
-    \u0275\u0275text(35);
-    \u0275\u0275pipe(36, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(37, "form", 15)(38, "button", 16)(39, "div", 17);
-    \u0275\u0275element(40, "img", 18);
-    \u0275\u0275elementStart(41, "span", 19);
-    \u0275\u0275element(42, "fa-icon", 20);
+    \u0275\u0275elementStart(33, "p");
+    \u0275\u0275text(34);
+    \u0275\u0275pipe(35, "translate");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(43, "h6");
-    \u0275\u0275text(44);
-    \u0275\u0275pipe(45, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(46, "span", 21);
-    \u0275\u0275text(47);
-    \u0275\u0275pipe(48, "translate");
+    \u0275\u0275elementStart(36, "button", 13);
+    \u0275\u0275listener("click", function PreStepComponent_Template_button_click_36_listener($event) {
+      \u0275\u0275restoreView(_r1);
+      return \u0275\u0275resetView(ctx.selecteBtn($event));
+    });
+    \u0275\u0275elementStart(37, "div", 14);
+    \u0275\u0275element(38, "img", 15);
+    \u0275\u0275elementStart(39, "span", 16);
+    \u0275\u0275element(40, "fa-icon", 17);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(49, "button", 16)(50, "div", 17);
-    \u0275\u0275element(51, "img", 22);
-    \u0275\u0275elementStart(52, "span", 19);
-    \u0275\u0275element(53, "fa-icon", 20);
+    \u0275\u0275elementStart(41, "h6");
+    \u0275\u0275text(42);
+    \u0275\u0275pipe(43, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(44, "span", 18);
+    \u0275\u0275text(45);
+    \u0275\u0275pipe(46, "translate");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(54, "h6");
-    \u0275\u0275text(55);
-    \u0275\u0275pipe(56, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(57, "span", 21);
-    \u0275\u0275text(58);
-    \u0275\u0275pipe(59, "translate");
+    \u0275\u0275elementStart(47, "button", 13);
+    \u0275\u0275listener("click", function PreStepComponent_Template_button_click_47_listener($event) {
+      \u0275\u0275restoreView(_r1);
+      return \u0275\u0275resetView(ctx.selecteBtn($event));
+    });
+    \u0275\u0275elementStart(48, "div", 14);
+    \u0275\u0275element(49, "img", 19);
+    \u0275\u0275elementStart(50, "span", 16);
+    \u0275\u0275element(51, "fa-icon", 17);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(60, "div", 23)(61, "h5");
-    \u0275\u0275text(62);
-    \u0275\u0275pipe(63, "translate");
+    \u0275\u0275elementStart(52, "h6");
+    \u0275\u0275text(53);
+    \u0275\u0275pipe(54, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(64, "p");
-    \u0275\u0275text(65);
-    \u0275\u0275pipe(66, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275element(67, "input", 24);
-    \u0275\u0275pipe(68, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(69, "a", 25);
-    \u0275\u0275text(70);
-    \u0275\u0275pipe(71, "translate");
-    \u0275\u0275elementEnd()()()()()()();
+    \u0275\u0275elementStart(55, "span", 18);
+    \u0275\u0275text(56);
+    \u0275\u0275pipe(57, "translate");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275template(58, PreStepComponent_div_58_Template, 9, 10, "div", 20);
+    \u0275\u0275elementStart(59, "button", 21);
+    \u0275\u0275text(60);
+    \u0275\u0275pipe(61, "translate");
+    \u0275\u0275elementEnd()()()()();
   }
   if (rf & 2) {
-    \u0275\u0275advance(8);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(9, 20, "pre_step.ad"), " ");
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(13, 22, "pre_step.title"), " ");
+    \u0275\u0275advance(9);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(10, 18, "pre_step.ad"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(16, 24, "pre_step.description"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(13, 20, "pre_step.title"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275property("ngForOf", \u0275\u0275pureFunction0(50, _c08));
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(16, 22, "pre_step.description"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275property("value", \u0275\u0275pipeBind1(22, 26, "language"));
+    \u0275\u0275property("ngForOf", \u0275\u0275pureFunction0(42, _c08));
+    \u0275\u0275advance(3);
+    \u0275\u0275property("value", \u0275\u0275pipeBind1(22, 24, "language"));
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(24, 28, "language"));
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(24, 26, "language"));
     \u0275\u0275advance(2);
     \u0275\u0275property("ngForOf", ctx.translateGetLangs);
-    \u0275\u0275advance(7);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(33, 30, "pre_step.build"), " ");
+    \u0275\u0275advance(6);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(32, 28, "pre_step.build"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(36, 32, "pre_step.build_description"), " ");
-    \u0275\u0275advance(7);
-    \u0275\u0275property("icon", ctx.faCheck);
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(45, 34, "pre_step.hand_made"), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(48, 36, "pre_step.hand_made_description"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(35, 30, "pre_step.build_description"), " ");
     \u0275\u0275advance(6);
     \u0275\u0275property("icon", ctx.faCheck);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(56, 38, "pre_step.ai"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(43, 32, "pre_step.hand_made"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(59, 40, "pre_step.ai_description"), " ");
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(63, 42, "pre_step.project_name"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(46, 34, "pre_step.hand_made_description"), " ");
+    \u0275\u0275advance(6);
+    \u0275\u0275property("icon", ctx.faCheck);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(54, 36, "pre_step.ai"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(66, 44, "pre_step.project_name_description"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(57, 38, "pre_step.ai_description"), " ");
     \u0275\u0275advance(2);
-    \u0275\u0275propertyInterpolate("placeholder", \u0275\u0275pipeBind1(68, 46, "pre_step.project_placeholder"));
-    \u0275\u0275advance(2);
-    \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(51, _c15));
+    \u0275\u0275property("ngIf", ctx.selectBtnClicked);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(71, 48, "pre_step.submit"), " ");
+    \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(43, _c15));
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(61, 40, "pre_step.submit"), " ");
   }
-}, dependencies: [NgForOf, RouterLink, RouterLinkActive, FaIconComponent, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, NgControlStatusGroup, NgForm, TranslatePipe], styles: ['\n\n.sec1[_ngcontent-%COMP%] {\n  width: 45%;\n  display: inline-block;\n  background: url("./media/bg1.png") no-repeat center center / cover;\n}\n.sec2[_ngcontent-%COMP%] {\n  width: 55%;\n  display: inline-block;\n}\n.ad[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  font-weight: 500;\n}\n.ad[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  opacity: 0.5;\n}\n.img-icon[_ngcontent-%COMP%] {\n  width: 22px;\n  display: block;\n}\n.description[_ngcontent-%COMP%] {\n  margin-top: 58px;\n}\n.description[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%] {\n  list-style: none;\n  padding: 0;\n}\n.description[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1rem;\n  gap: 14px;\n}\n.description[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%] {\n  width: 26px;\n  height: 26px;\n  background: var(--soft-primary);\n  color: var(--primary);\n  font-size: 15px;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.description[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%] {\n  color: var(--light-dark);\n}\nselect[_ngcontent-%COMP%] {\n  color: var(--dark);\n  font-size: 14px;\n  background-color: var(--white);\n  border: 0.75px solid var(--soft-dark);\n  box-shadow: 0px 4px 10px -8px #00000040;\n  border-radius: 5px;\n}\nselect[_ngcontent-%COMP%]:hover {\n  box-shadow: 0px 4px 10px -5px #00000040;\n}\nselect[_ngcontent-%COMP%]:focus {\n  border-color: var(--primary);\n  outline: 0;\n  box-shadow: 0 0 1px 0.2px var(--soft-primary);\n}\n.select-btn[_ngcontent-%COMP%] {\n  width: 100%;\n  align-items: start;\n  padding: 10px 15px 25px 5px;\n  border: 0.75px solid var(--soft-dark);\n  box-shadow: 0px 2px 7.2px -5px #94949433;\n  margin-bottom: 20px;\n  -o-transition: all 0.3s ease;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.select-btn[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 35px;\n  height: 35px;\n}\n.select-btn[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%] {\n  text-align: start;\n}\n.project-name[_ngcontent-%COMP%] {\n  padding-top: 10px;\n  border-top: 0.75px solid var(--soft-dark);\n}\n[_ngcontent-%COMP%]::-webkit-input-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]:-moz-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]::-moz-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]:-ms-input-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]::-ms-input-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]::placeholder {\n  color: var(--light-gray);\n}\nform[_ngcontent-%COMP%]   .btn.btn-primary[_ngcontent-%COMP%] {\n  width: 198px;\n  margin-right: auto;\n  margin-top: 4rem;\n}\n@media (max-width: 768px) {\n  section[_ngcontent-%COMP%] {\n    height: auto;\n    padding-bottom: 3rem;\n  }\n  .sec1[_ngcontent-%COMP%] {\n    width: 100%;\n  }\n  .sec2[_ngcontent-%COMP%] {\n    width: 100%;\n  }\n  .bg[_ngcontent-%COMP%]::before {\n    display: none;\n  }\n  .description[_ngcontent-%COMP%] {\n    margin-top: 0;\n  }\n  .description[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n    gap: 10px;\n  }\n  .select-btn[_ngcontent-%COMP%] {\n    padding: 10px 15px 15px 5px;\n  }\n  .select-btn[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n    width: 30px;\n    height: 30px;\n  }\n  .select-btn[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n  .project-name[_ngcontent-%COMP%] {\n    padding-top: 5px;\n  }\n  form[_ngcontent-%COMP%]   .btn[_ngcontent-%COMP%] {\n    width: 100%;\n  }\n}\n/*# sourceMappingURL=pre-step.component.css.map */'] });
+}, dependencies: [NgForOf, NgIf, RouterLink, RouterLinkActive, FaIconComponent, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, NgModel, NgForm, PreloaderComponent, TranslatePipe], styles: ['\n\n.pre-step[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n}\n.pre-step[_ngcontent-%COMP%]    > div[_ngcontent-%COMP%] {\n  padding-top: 4rem;\n  height: 100%;\n}\n.container-content[_ngcontent-%COMP%] {\n  justify-content: flex-start;\n}\nh4[_ngcontent-%COMP%], \nh5[_ngcontent-%COMP%], \np[_ngcontent-%COMP%] {\n  margin: 0;\n}\n.description[_ngcontent-%COMP%] {\n  flex-basis: 45%;\n  background: url("./media/bg1.png") no-repeat center center / cover;\n}\n.description[_ngcontent-%COMP%]   .container[_ngcontent-%COMP%] {\n  padding: 0 40px;\n}\n.description[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n  gap: 10px;\n  margin-bottom: 3rem;\n}\n.title[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  font-weight: 500;\n  gap: 5px;\n}\n.title[_ngcontent-%COMP%]   .ad[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  margin-bottom: 3rem;\n}\n.ad[_ngcontent-%COMP%]   .img-icon[_ngcontent-%COMP%] {\n  width: 22px;\n  display: block;\n}\n.title[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  opacity: 0.5;\n}\n.description[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%] {\n  list-style: none;\n  padding: 0;\n}\n.description[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  margin-bottom: 1rem;\n  gap: 14px;\n}\n.description[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%] {\n  width: 26px;\n  height: 26px;\n  background: var(--soft-primary);\n  color: var(--primary);\n  font-size: 15px;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.description[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%] {\n  color: var(--light-dark);\n}\nselect[_ngcontent-%COMP%] {\n  color: var(--dark);\n  font-size: 14px;\n  background-color: var(--white);\n  border: 0.75px solid var(--soft-dark);\n  box-shadow: 0px 4px 10px -8px #00000040;\n  border-radius: 5px;\n}\nselect[_ngcontent-%COMP%]:hover {\n  box-shadow: 0px 4px 10px -5px #00000040;\n}\nselect[_ngcontent-%COMP%]:focus {\n  border-color: var(--primary);\n  outline: 0;\n  box-shadow: 0 0 1px 0.2px var(--soft-primary);\n}\n.form[_ngcontent-%COMP%] {\n  flex-basis: 55%;\n}\n.form[_ngcontent-%COMP%]   .container-content[_ngcontent-%COMP%] {\n  gap: 10px;\n}\n.select-btn[_ngcontent-%COMP%] {\n  width: 100%;\n  align-items: start;\n  padding: 10px 15px 20px 5px;\n  border: 0.75px solid var(--soft-dark);\n  box-shadow: 0px 2px 7.2px -5px #94949433;\n  -o-transition: all 0.3s ease;\n  -webkit-transition: all 0.3s ease;\n  -moz-transition: all 0.3s ease;\n  -ms-transition: all 0.3s ease;\n  transition: all 0.3s ease;\n}\n.select-btn[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 35px;\n  height: 35px;\n}\n.select-btn[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%] {\n  text-align: start;\n}\n.project-name[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  padding-top: 10px;\n  border-top: 0.75px solid var(--soft-dark);\n}\n[_ngcontent-%COMP%]::-webkit-input-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]:-moz-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]::-moz-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]:-ms-input-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]::-ms-input-placeholder {\n  color: var(--light-gray);\n}\n[_ngcontent-%COMP%]::placeholder {\n  color: var(--light-gray);\n}\nform[_ngcontent-%COMP%]   .btn.btn-primary[_ngcontent-%COMP%] {\n  width: 198px;\n  margin: auto auto 1rem 0;\n}\n.warning[_ngcontent-%COMP%] {\n  color: var(--danger);\n}\n/*# sourceMappingURL=pre-step.component.css.map */'] });
 var PreStepComponent = _PreStepComponent;
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(PreStepComponent, { className: "PreStepComponent", filePath: "src\\app\\pre-step\\pre-step.component.ts", lineNumber: 10 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(PreStepComponent, { className: "PreStepComponent", filePath: "src\\app\\pre-step\\pre-step.component.ts", lineNumber: 11 });
 })();
 
 // src/app/selection/selection.component.ts
 var _c09 = () => ["/Describe-House"];
-var _SelectionComponent = class _SelectionComponent {
-  constructor() {
-    this.faCheck = faCheck;
-  }
-};
-_SelectionComponent.\u0275fac = function SelectionComponent_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _SelectionComponent)();
-};
-_SelectionComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _SelectionComponent, selectors: [["selection"]], decls: 83, vars: 56, consts: [[1, "bg"], [1, "container"], [1, "d-none", "container-content"], [1, "title"], [1, "buttons"], [1, "home-button"], ["src", "./images/icon/home.png", "alt", "home"], [1, "icon"], [3, "icon"], ["src", "./images/icon/truck.png", "alt", "truck"], ["src", "./images/icon/person.png", "alt", "person"], [1, "submition"], [1, "btn", "btn-primary"], ["src", "./images/icon/right_arrow.png", "alt", "right_arrow"], [1, "container-content"], ["src", "./images/icon/camera_film.png", "alt", "camera_film"], ["src", "./images/icon/building_primary.png", "alt", "building_primary"], ["src", "./images/icon/building_success.png", "alt", "building_success"], ["routerLinkActive", "router-link-active", 1, "btn", "btn-primary", 3, "routerLink"]], template: function SelectionComponent_Template(rf, ctx) {
+function SelectionComponent_form_3_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "section", 0)(1, "div", 1)(2, "form", 2)(3, "div", 3)(4, "h5");
-    \u0275\u0275text(5);
-    \u0275\u0275pipe(6, "translate");
+    const _r1 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "form", 4)(1, "div", 5)(2, "h5");
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "p");
-    \u0275\u0275text(8);
-    \u0275\u0275pipe(9, "translate");
+    \u0275\u0275elementStart(5, "p");
+    \u0275\u0275text(6);
+    \u0275\u0275pipe(7, "translate");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(10, "div", 4)(11, "button", 5);
-    \u0275\u0275element(12, "img", 6);
-    \u0275\u0275elementStart(13, "h6");
-    \u0275\u0275text(14);
-    \u0275\u0275pipe(15, "translate");
+    \u0275\u0275elementStart(8, "div", 6)(9, "button", 7);
+    \u0275\u0275listener("click", function SelectionComponent_form_3_Template_button_click_9_listener($event) {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.selecteBtn($event, "location"));
+    });
+    \u0275\u0275element(10, "img", 8);
+    \u0275\u0275elementStart(11, "h6");
+    \u0275\u0275text(12);
+    \u0275\u0275pipe(13, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "span", 7);
-    \u0275\u0275element(17, "fa-icon", 8);
+    \u0275\u0275elementStart(14, "span", 9);
+    \u0275\u0275element(15, "fa-icon", 10);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(18, "button", 5);
-    \u0275\u0275element(19, "img", 9);
-    \u0275\u0275elementStart(20, "h6");
-    \u0275\u0275text(21);
-    \u0275\u0275pipe(22, "translate");
+    \u0275\u0275elementStart(16, "button", 7);
+    \u0275\u0275listener("click", function SelectionComponent_form_3_Template_button_click_16_listener($event) {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.selecteBtn($event, "location"));
+    });
+    \u0275\u0275element(17, "img", 11);
+    \u0275\u0275elementStart(18, "h6");
+    \u0275\u0275text(19);
+    \u0275\u0275pipe(20, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(23, "span", 7);
-    \u0275\u0275element(24, "fa-icon", 8);
+    \u0275\u0275elementStart(21, "span", 9);
+    \u0275\u0275element(22, "fa-icon", 10);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(25, "button", 5);
-    \u0275\u0275element(26, "img", 10);
-    \u0275\u0275elementStart(27, "h6");
-    \u0275\u0275text(28);
-    \u0275\u0275pipe(29, "translate");
+    \u0275\u0275elementStart(23, "button", 12);
+    \u0275\u0275listener("click", function SelectionComponent_form_3_Template_button_click_23_listener($event) {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.selecteBtn($event, "location"));
+    });
+    \u0275\u0275element(24, "img", 13);
+    \u0275\u0275elementStart(25, "h6");
+    \u0275\u0275text(26);
+    \u0275\u0275pipe(27, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(30, "span", 7);
-    \u0275\u0275element(31, "fa-icon", 8);
+    \u0275\u0275elementStart(28, "span", 9);
+    \u0275\u0275element(29, "fa-icon", 10);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(32, "div", 11)(33, "a", 12);
-    \u0275\u0275element(34, "img", 13);
+    \u0275\u0275elementStart(30, "div", 14)(31, "button", 15);
+    \u0275\u0275listener("click", function SelectionComponent_form_3_Template_button_click_31_listener() {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.nextBtn());
+    });
+    \u0275\u0275element(32, "img", 16);
+    \u0275\u0275text(33);
+    \u0275\u0275pipe(34, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(35, "span");
+    \u0275\u0275text(36);
+    \u0275\u0275pipe(37, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(38, "span");
+    \u0275\u0275text(39);
+    \u0275\u0275pipe(40, "translate");
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(4, 15, "selection.title"));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(7, 17, "selection.description"));
+    \u0275\u0275advance(6);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(13, 19, "selection.location.cairo"), " ");
+    \u0275\u0275advance(3);
+    \u0275\u0275property("icon", ctx_r1.faCheck);
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(20, 21, "selection.location.north_coast"), " ");
+    \u0275\u0275advance(3);
+    \u0275\u0275property("icon", ctx_r1.faCheck);
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(27, 23, "selection.location.dahab"), " ");
+    \u0275\u0275advance(3);
+    \u0275\u0275property("icon", ctx_r1.faCheck);
+    \u0275\u0275advance(2);
+    \u0275\u0275classMapInterpolate1("btn btn-primary ", ctx_r1.active, "");
+    \u0275\u0275property("disabled", !ctx_r1.isLocationSelected);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(34, 25, "selection.button"), " ");
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(37, 27, "selection.help"), " ");
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(40, 29, "selection.directe"), " ");
+  }
+}
+function SelectionComponent_form_4_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r3 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "form", 4)(1, "div", 5)(2, "h5");
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "p");
+    \u0275\u0275text(6);
+    \u0275\u0275pipe(7, "translate");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(8, "div", 6)(9, "button", 7);
+    \u0275\u0275listener("click", function SelectionComponent_form_4_Template_button_click_9_listener($event) {
+      \u0275\u0275restoreView(_r3);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.selecteBtn($event, "type"));
+    });
+    \u0275\u0275element(10, "img", 17);
+    \u0275\u0275elementStart(11, "h6");
+    \u0275\u0275text(12);
+    \u0275\u0275pipe(13, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(14, "span", 9);
+    \u0275\u0275element(15, "fa-icon", 10);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(16, "button", 7);
+    \u0275\u0275listener("click", function SelectionComponent_form_4_Template_button_click_16_listener($event) {
+      \u0275\u0275restoreView(_r3);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.selecteBtn($event, "type"));
+    });
+    \u0275\u0275element(17, "img", 18);
+    \u0275\u0275elementStart(18, "h6");
+    \u0275\u0275text(19);
+    \u0275\u0275pipe(20, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(21, "span", 9);
+    \u0275\u0275element(22, "fa-icon", 10);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(23, "button", 7);
+    \u0275\u0275listener("click", function SelectionComponent_form_4_Template_button_click_23_listener($event) {
+      \u0275\u0275restoreView(_r3);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.selecteBtn($event, "type"));
+    });
+    \u0275\u0275element(24, "img", 19);
+    \u0275\u0275elementStart(25, "h6");
+    \u0275\u0275text(26);
+    \u0275\u0275pipe(27, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(28, "span", 9);
+    \u0275\u0275element(29, "fa-icon", 10);
+    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(30, "div", 14)(31, "button", 20);
+    \u0275\u0275text(32);
+    \u0275\u0275pipe(33, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(34, "span");
     \u0275\u0275text(35);
     \u0275\u0275pipe(36, "translate");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(37, "span");
     \u0275\u0275text(38);
     \u0275\u0275pipe(39, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(40, "span");
-    \u0275\u0275text(41);
-    \u0275\u0275pipe(42, "translate");
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(43, "form", 14)(44, "div", 3)(45, "h5");
-    \u0275\u0275text(46);
-    \u0275\u0275pipe(47, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(48, "p");
-    \u0275\u0275text(49);
-    \u0275\u0275pipe(50, "translate");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(51, "div", 4)(52, "button", 5);
-    \u0275\u0275element(53, "img", 15);
-    \u0275\u0275elementStart(54, "h6");
-    \u0275\u0275text(55);
-    \u0275\u0275pipe(56, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(57, "span", 7);
-    \u0275\u0275element(58, "fa-icon", 8);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(59, "button", 5);
-    \u0275\u0275element(60, "img", 16);
-    \u0275\u0275elementStart(61, "h6");
-    \u0275\u0275text(62);
-    \u0275\u0275pipe(63, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(64, "span", 7);
-    \u0275\u0275element(65, "fa-icon", 8);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(66, "button", 5);
-    \u0275\u0275element(67, "img", 17);
-    \u0275\u0275elementStart(68, "h6");
-    \u0275\u0275text(69);
-    \u0275\u0275pipe(70, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(71, "span", 7);
-    \u0275\u0275element(72, "fa-icon", 8);
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(73, "div", 11)(74, "a", 18);
-    \u0275\u0275text(75);
-    \u0275\u0275pipe(76, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(77, "span");
-    \u0275\u0275text(78);
-    \u0275\u0275pipe(79, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(80, "span");
-    \u0275\u0275text(81);
-    \u0275\u0275pipe(82, "translate");
-    \u0275\u0275elementEnd()()()()();
   }
   if (rf & 2) {
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(6, 23, "selection.title"));
+    const ctx_r1 = \u0275\u0275nextContext();
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(9, 25, "selection.description"));
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(4, 16, "selection.house_type"));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(7, 18, "selection.house_type_description"));
     \u0275\u0275advance(6);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(15, 27, "selection.location.cairo"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(13, 20, "selection.types.villa"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275property("icon", ctx.faCheck);
+    \u0275\u0275property("icon", ctx_r1.faCheck);
     \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(22, 29, "selection.location.north_coast"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(20, 22, "selection.types.duplex_apartment"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275property("icon", ctx.faCheck);
+    \u0275\u0275property("icon", ctx_r1.faCheck);
     \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(29, 31, "selection.location.dahab"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(27, 24, "selection.types.apartment"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275property("icon", ctx.faCheck);
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(36, 33, "selection.button"), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(39, 35, "selection.help"), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(42, 37, "selection.directe"), " ");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(47, 39, "selection.house_type"));
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(50, 41, "selection.house_type_description"));
-    \u0275\u0275advance(6);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(56, 43, "selection.types.villa"), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275property("icon", ctx.faCheck);
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(63, 45, "selection.types.duplex_apartment"), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275property("icon", ctx.faCheck);
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(70, 47, "selection.types.apartment"), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275property("icon", ctx.faCheck);
+    \u0275\u0275property("icon", ctx_r1.faCheck);
     \u0275\u0275advance(2);
-    \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(55, _c09));
+    \u0275\u0275classMapInterpolate1("btn btn-primary ", ctx_r1.active, "");
+    \u0275\u0275property("disabled", !ctx_r1.isTypeSelected)("routerLink", \u0275\u0275pureFunction0(32, _c09));
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(76, 49, "selection.next"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(33, 26, "selection.next"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(79, 51, "selection.help"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(36, 28, "selection.help"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(82, 53, "selection.directe"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(39, 30, "selection.directe"), " ");
   }
-}, dependencies: [RouterLink, RouterLinkActive, FaIconComponent, \u0275NgNoValidate, NgControlStatusGroup, NgForm, TranslatePipe], styles: ['\n\n.container-content[_ngcontent-%COMP%] {\n  align-items: center;\n  padding: 4rem 0;\n  text-align: center;\n}\n.title[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  padding: 0 20px;\n  width: fit-content;\n}\n.title[_ngcontent-%COMP%]   h5[_ngcontent-%COMP%] {\n  position: relative;\n  width: fit-content;\n  min-width: 230px;\n}\n.title[_ngcontent-%COMP%]   h5[_ngcontent-%COMP%]::before, \n.title[_ngcontent-%COMP%]::before {\n  content: "";\n  position: absolute;\n  background-image: url("./media/star.png");\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n.title[_ngcontent-%COMP%]   h5[_ngcontent-%COMP%]::before {\n  top: -15px;\n  right: -15px;\n  width: 13.88px;\n  height: 16.33px;\n}\n.title[_ngcontent-%COMP%]::before {\n  bottom: -10px;\n  left: 0px;\n  width: 18.5px;\n  height: 21.77px;\n}\n.buttons[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  gap: 20px;\n  margin-top: 4rem;\n}\n.home-button[_ngcontent-%COMP%] {\n  align-items: center;\n  width: 166px;\n  height: 136.49px;\n  padding: 20px 20px 10px 20px;\n  gap: 19px;\n}\n.home-button[_ngcontent-%COMP%]:hover {\n  box-shadow: 0px 4px 10px -8px #00000040;\n}\n.home-button[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 59px;\n  height: 59px;\n}\n.home-button[_ngcontent-%COMP%]   h6[_ngcontent-%COMP%] {\n  font-size: 14px;\n}\n.home-button[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.submition[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  gap: 5px;\n  margin-top: 8rem;\n}\n.submition[_ngcontent-%COMP%]   .btn.btn-primary[_ngcontent-%COMP%] {\n  width: 164.35px;\n  margin-bottom: 20px;\n  gap: 10px;\n}\n.submition[_ngcontent-%COMP%]   .btn.btn-primary[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n}\n.submition[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--gray);\n}\n/*# sourceMappingURL=selection.component.css.map */'] });
+}
+var _SelectionComponent = class _SelectionComponent {
+  constructor() {
+    this.faCheck = faCheck;
+    this.isLocationSelected = false;
+    this.isTypeSelected = false;
+    this.active = "";
+    this.isNextStep = false;
+    this.method = new Methods();
+    this.submitType = null;
+  }
+  //Lifecycle hook.
+  ngOnInit() {
+    this.submitType = document.getElementById("submitType");
+  }
+  //Select button clicked.
+  selecteBtn(evt, type) {
+    if (type === "location") {
+      this.active = "active";
+      this.isLocationSelected = this.method.selecteBtn(evt);
+    } else if (type === "type") {
+      this.active = "active";
+      this.isTypeSelected = this.method.selecteBtn(evt);
+    }
+  }
+  //Next button clicked.
+  nextBtn() {
+    const preLoader = document.getElementById("preLoader");
+    if (this.isLocationSelected) {
+      preLoader.style.opacity = "1";
+      preLoader.style.display = "block";
+      setTimeout(() => {
+        preLoader.style.display = "none";
+        preLoader.style.opacity = "0";
+      }, 500);
+      this.isNextStep = true;
+      this.active = "";
+    }
+  }
+};
+_SelectionComponent.\u0275fac = function SelectionComponent_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _SelectionComponent)();
+};
+_SelectionComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _SelectionComponent, selectors: [["selection"]], decls: 5, vars: 2, consts: [["id", "preLoader"], [1, "bg"], [1, "container"], ["class", "container-content", 4, "ngIf"], [1, "container-content"], [1, "title"], [1, "buttons"], [1, "home-button", "selecting", 3, "click"], ["src", "./images/icon/home.png", "alt", "home"], [1, "icon"], [3, "icon"], ["src", "./images/icon/truck.png", "alt", "truck"], [1, "home-button", "selecting", "selecting", 3, "click"], ["src", "./images/icon/person.png", "alt", "person"], [1, "submition"], [3, "click", "disabled"], ["src", "./images/icon/right_arrow.png", "alt", "right_arrow"], ["src", "./images/icon/camera_film.png", "alt", "camera_film"], ["src", "./images/icon/building_primary.png", "alt", "building_primary"], ["src", "./images/icon/building_success.png", "alt", "building_success"], ["id", "submitType", "routerLinkActive", "router-link-active", 3, "disabled", "routerLink"]], template: function SelectionComponent_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275element(0, "preloader", 0);
+    \u0275\u0275elementStart(1, "section", 1)(2, "div", 2);
+    \u0275\u0275template(3, SelectionComponent_form_3_Template, 41, 31, "form", 3)(4, SelectionComponent_form_4_Template, 40, 33, "form", 3);
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    \u0275\u0275advance(3);
+    \u0275\u0275property("ngIf", !ctx.isNextStep);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx.isNextStep);
+  }
+}, dependencies: [NgIf, RouterLink, RouterLinkActive, FaIconComponent, \u0275NgNoValidate, NgControlStatusGroup, NgForm, PreloaderComponent, TranslatePipe], styles: ['\n\n.container-content[_ngcontent-%COMP%] {\n  align-items: center;\n  padding: 4rem 0;\n  text-align: center;\n}\n.title[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  padding: 0 20px;\n  width: fit-content;\n}\n.title[_ngcontent-%COMP%]   h5[_ngcontent-%COMP%] {\n  position: relative;\n  width: fit-content;\n  min-width: 230px;\n}\n.title[_ngcontent-%COMP%]   h5[_ngcontent-%COMP%]::before, \n.title[_ngcontent-%COMP%]::before {\n  content: "";\n  position: absolute;\n  background-image: url("./media/star.png");\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n.title[_ngcontent-%COMP%]   h5[_ngcontent-%COMP%]::before {\n  top: -15px;\n  right: -15px;\n  width: 13.88px;\n  height: 16.33px;\n}\n.title[_ngcontent-%COMP%]::before {\n  bottom: -10px;\n  left: 0px;\n  width: 18.5px;\n  height: 21.77px;\n}\n.buttons[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  gap: 20px;\n  margin-top: 4rem;\n}\n.home-button[_ngcontent-%COMP%] {\n  align-items: center;\n  width: 166px;\n  height: 136.49px;\n  padding: 20px 20px 10px 20px;\n  gap: 19px;\n}\n.home-button[_ngcontent-%COMP%]:hover {\n  box-shadow: 0px 4px 10px -8px #00000040;\n}\n.home-button[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 59px;\n  height: 59px;\n}\n.home-button[_ngcontent-%COMP%]   h6[_ngcontent-%COMP%] {\n  font-size: 14px;\n}\n.home-button[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.submition[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  gap: 5px;\n  margin-top: 8rem;\n}\n.submition[_ngcontent-%COMP%]   .btn.btn-primary[_ngcontent-%COMP%] {\n  width: 164.35px;\n  margin-bottom: 20px;\n  gap: 10px;\n}\n.submition[_ngcontent-%COMP%]   .btn.btn-primary[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 16px;\n  height: 16px;\n}\n.submition[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  font-size: 12px;\n  color: var(--gray);\n}\n/*# sourceMappingURL=selection.component.css.map */'] });
 var SelectionComponent = _SelectionComponent;
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(SelectionComponent, { className: "SelectionComponent", filePath: "src\\app\\selection\\selection.component.ts", lineNumber: 9 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(SelectionComponent, { className: "SelectionComponent", filePath: "src\\app\\selection\\selection.component.ts", lineNumber: 10 });
 })();
 
 // node_modules/@fortawesome/free-regular-svg-icons/index.mjs
@@ -52971,93 +53175,94 @@ var faCalendarCheck = {
 var _c010 = () => ({ height: "250px" });
 var _c16 = () => ({ height: "240px" });
 var _c23 = () => ["/Submission"];
-function ProbComponent_ng_template_17_Template(rf, ctx) {
+function ProbComponent_form_3_span_10_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "span", 25);
-    \u0275\u0275element(1, "button", 26)(2, "button", 27);
+    \u0275\u0275elementStart(0, "span", 17);
+    \u0275\u0275text(1);
+    \u0275\u0275pipe(2, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "span", 25);
-    \u0275\u0275element(4, "button", 28)(5, "button", 29);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "span", 25);
-    \u0275\u0275element(7, "select", 30);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "span", 25);
-    \u0275\u0275element(9, "button", 31)(10, "button", 32)(11, "button", 33)(12, "button", 34);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(13, "span", 25);
-    \u0275\u0275element(14, "button", 35)(15, "button", 36);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "span", 25);
-    \u0275\u0275element(17, "select", 37);
-    \u0275\u0275elementEnd();
-  }
-}
-function ProbComponent_ng_template_53_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "h6", 38);
-    \u0275\u0275element(1, "fa-icon", 16);
-    \u0275\u0275text(2);
-    \u0275\u0275pipe(3, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(4, "span")(5, "span");
-    \u0275\u0275text(6);
-    \u0275\u0275pipe(7, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "span", 39);
-    \u0275\u0275text(9, " dsfd ");
-    \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext();
     \u0275\u0275advance();
-    \u0275\u0275property("icon", ctx_r0.faEye);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(3, 3, "prop.description_check"), " ");
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(7, 5, "prop.topic"), ": ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(2, 1, "prop.warningTopic"), " ");
   }
 }
-var _ProbComponent = class _ProbComponent {
-  constructor() {
-    this.faEye = faEye;
-    this.faCalendarCheck = faCalendarCheck;
-    this._text = [];
-  }
-  get text() {
-    return this._text;
-  }
-  set text(value) {
-    this._text = value;
-  }
-};
-_ProbComponent.\u0275fac = function ProbComponent_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _ProbComponent)();
-};
-_ProbComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _ProbComponent, selectors: [["prob"]], decls: 61, vars: 53, consts: [[1, "bg"], [1, "container"], [1, "d-none", "container-content"], [1, "title", "stars"], [1, "form-group"], ["for", "smallDescription", 1, "mb-2"], ["id", "smallDescription", "type", "text", 1, "form-control"], [1, "form-group", "mt-2", "mt-sm-4"], ["for", "description", 1, "mb-2"], [1, "p-ico", 3, "ngModelChange", "ngModel"], ["pTemplate", "header"], [1, "d-flex", "text-center", "flex-column", "align-items-center", "justify-content-center", "mt-2", "mt-sm-4"], [1, "btn", "btn-primary", "active", "mb-2"], [1, "container-content"], [1, "title"], [1, "form-group", "radio"], [2, "margin-left", "2px", 3, "icon"], [1, "radio-group"], ["type", "radio", "id", "design1", "name", "design", 3, "value"], ["for", "design1"], ["type", "radio", "id", "design2", "name", "design", 3, "value"], ["for", "design2"], [1, "form-group", "mt-2"], [1, "p-template", 3, "ngModelChange", "ngModel"], ["routerLinkActive", "router-link-active", 1, "btn", "btn-primary", "active", "mb-2", 3, "routerLink"], [1, "ql-formats"], ["aria-label", "Insert Image", "type", "button", 1, "ql-image"], ["aria-label", "Insert Link", "type", "button", 1, "ql-link", 2, "transform", "rotate(90deg)"], ["value", "ordered", "aria-label", "Ordered List", "type", "button", 1, "ql-list"], ["value", "bullet", "aria-label", "Unordered List", "type", "button", 1, "ql-list"], [1, "ql-align"], ["aria-label", "Bold", "type", "button", 1, "ql-bold"], ["aria-label", "Italic", "type", "button", 1, "ql-italic"], ["aria-label", "Underline", "type", "button", 1, "ql-underline"], ["aria-label", "Strike", "type", "button", 1, "ql-strike"], ["aria-label", "background color", "type", "button", 1, "ql-background"], ["aria-label", "text color", "type", "button", 1, "ql-color"], [1, "ql-size"], [1, "mb-3"], [1, "ms-1", "text-dark"]], template: function ProbComponent_Template(rf, ctx) {
+function ProbComponent_form_3_ng_template_16_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "section", 0)(1, "div", 1)(2, "form", 2)(3, "div", 3)(4, "h5");
-    \u0275\u0275text(5);
-    \u0275\u0275pipe(6, "translate");
+    \u0275\u0275elementStart(0, "span", 18);
+    \u0275\u0275element(1, "button", 19)(2, "button", 20);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(3, "span", 18);
+    \u0275\u0275element(4, "button", 21)(5, "button", 22);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(6, "span", 18);
+    \u0275\u0275element(7, "select", 23);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(8, "span", 18);
+    \u0275\u0275element(9, "button", 24)(10, "button", 25)(11, "button", 26)(12, "button", 27);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(13, "span", 18);
+    \u0275\u0275element(14, "button", 28)(15, "button", 29);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(16, "span", 18);
+    \u0275\u0275element(17, "select", 30);
+    \u0275\u0275elementEnd();
+  }
+}
+function ProbComponent_form_3_span_17_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "span", 17);
+    \u0275\u0275text(1);
+    \u0275\u0275pipe(2, "translate");
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(2, 1, "prop.warningArticle"), " ");
+  }
+}
+function ProbComponent_form_3_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r1 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "form", 5)(1, "div", 6)(2, "h5");
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "translate");
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(7, "div", 4)(8, "label", 5);
-    \u0275\u0275text(9);
-    \u0275\u0275pipe(10, "translate");
+    \u0275\u0275elementStart(5, "div", 7)(6, "label", 8);
+    \u0275\u0275text(7);
+    \u0275\u0275pipe(8, "translate");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(11, "input", 6);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "div", 7)(13, "label", 8);
-    \u0275\u0275text(14);
-    \u0275\u0275pipe(15, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "p-editor", 9);
-    \u0275\u0275twoWayListener("ngModelChange", function ProbComponent_Template_p_editor_ngModelChange_16_listener($event) {
-      \u0275\u0275twoWayBindingSet(ctx.text, $event) || (ctx.text = $event);
-      return $event;
+    \u0275\u0275elementStart(9, "input", 9);
+    \u0275\u0275twoWayListener("ngModelChange", function ProbComponent_form_3_Template_input_ngModelChange_9_listener($event) {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      \u0275\u0275twoWayBindingSet(ctx_r1.topic, $event) || (ctx_r1.topic = $event);
+      return \u0275\u0275resetView($event);
     });
-    \u0275\u0275template(17, ProbComponent_ng_template_17_Template, 18, 0, "ng-template", 10);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(18, "div", 11)(19, "a", 12);
+    \u0275\u0275elementEnd();
+    \u0275\u0275template(10, ProbComponent_form_3_span_10_Template, 3, 3, "span", 10);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(11, "div", 11)(12, "label", 12);
+    \u0275\u0275text(13);
+    \u0275\u0275pipe(14, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(15, "p-editor", 13);
+    \u0275\u0275twoWayListener("ngModelChange", function ProbComponent_form_3_Template_p_editor_ngModelChange_15_listener($event) {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      \u0275\u0275twoWayBindingSet(ctx_r1.article, $event) || (ctx_r1.article = $event);
+      return \u0275\u0275resetView($event);
+    });
+    \u0275\u0275template(16, ProbComponent_form_3_ng_template_16_Template, 18, 0, "ng-template", 14);
+    \u0275\u0275elementEnd();
+    \u0275\u0275template(17, ProbComponent_form_3_span_17_Template, 3, 3, "span", 10);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(18, "div", 15)(19, "button", 16);
+    \u0275\u0275listener("click", function ProbComponent_form_3_Template_button_click_19_listener() {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.submit());
+    });
     \u0275\u0275text(20);
     \u0275\u0275pipe(21, "translate");
     \u0275\u0275elementEnd();
@@ -53065,158 +53270,311 @@ _ProbComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _
     \u0275\u0275text(23);
     \u0275\u0275pipe(24, "translate");
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(25, "div", 13)(26, "div", 14)(27, "h5");
-    \u0275\u0275text(28);
-    \u0275\u0275pipe(29, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(30, "p");
-    \u0275\u0275text(31);
-    \u0275\u0275pipe(32, "translate");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(33, "div", 15)(34, "h6");
-    \u0275\u0275element(35, "fa-icon", 16);
-    \u0275\u0275text(36);
-    \u0275\u0275pipe(37, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(38, "div", 17)(39, "span");
-    \u0275\u0275element(40, "input", 18);
-    \u0275\u0275pipe(41, "translate");
-    \u0275\u0275elementStart(42, "label", 19);
-    \u0275\u0275text(43);
-    \u0275\u0275pipe(44, "translate");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(45, "span");
-    \u0275\u0275element(46, "input", 20);
-    \u0275\u0275pipe(47, "translate");
-    \u0275\u0275elementStart(48, "label", 21);
-    \u0275\u0275text(49);
-    \u0275\u0275pipe(50, "translate");
-    \u0275\u0275elementEnd()()()();
-    \u0275\u0275elementStart(51, "div", 22)(52, "p-editor", 23);
-    \u0275\u0275twoWayListener("ngModelChange", function ProbComponent_Template_p_editor_ngModelChange_52_listener($event) {
-      \u0275\u0275twoWayBindingSet(ctx.text, $event) || (ctx.text = $event);
-      return $event;
-    });
-    \u0275\u0275template(53, ProbComponent_ng_template_53_Template, 10, 7, "ng-template", 10);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(54, "div", 11)(55, "a", 24);
-    \u0275\u0275text(56);
-    \u0275\u0275pipe(57, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(58, "span");
-    \u0275\u0275text(59);
-    \u0275\u0275pipe(60, "translate");
-    \u0275\u0275elementEnd()()()()();
   }
   if (rf & 2) {
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(6, 22, "prop.title"));
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(4, 11, "prop.title"));
     \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(10, 24, "prop.small_description"));
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(15, 26, "prop.description"));
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(8, 13, "prop.small_description"));
     \u0275\u0275advance(2);
-    \u0275\u0275styleMap(\u0275\u0275pureFunction0(50, _c010));
-    \u0275\u0275twoWayProperty("ngModel", ctx.text);
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(21, 28, "prop.button"), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(24, 30, "prop.help"), " ");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(29, 32, "prop.message"));
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(32, 34, "prop.message_description"));
-    \u0275\u0275advance(4);
-    \u0275\u0275property("icon", ctx.faCalendarCheck);
+    \u0275\u0275twoWayProperty("ngModel", ctx_r1.topic);
     \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(37, 36, "prop.design"), " ");
-    \u0275\u0275advance(4);
-    \u0275\u0275propertyInterpolate("value", \u0275\u0275pipeBind1(41, 38, "prop.modern"));
+    \u0275\u0275property("ngIf", !ctx_r1.isTopicFilled);
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(44, 40, "prop.modern"));
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(14, 15, "prop.description"));
+    \u0275\u0275advance(2);
+    \u0275\u0275styleMap(\u0275\u0275pureFunction0(21, _c010));
+    \u0275\u0275twoWayProperty("ngModel", ctx_r1.article);
+    \u0275\u0275advance(2);
+    \u0275\u0275property("ngIf", !ctx_r1.isArticleFilled);
     \u0275\u0275advance(3);
-    \u0275\u0275propertyInterpolate("value", \u0275\u0275pipeBind1(47, 42, "prop.modern_smart"));
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(21, 17, "prop.button"), " ");
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(50, 44, "prop.modern_smart"));
-    \u0275\u0275advance(3);
-    \u0275\u0275styleMap(\u0275\u0275pureFunction0(51, _c16));
-    \u0275\u0275twoWayProperty("ngModel", ctx.text);
-    \u0275\u0275advance(3);
-    \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(52, _c23));
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(57, 46, "prop.button"), " ");
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(60, 48, "prop.help"), " ");
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(24, 19, "prop.help"), " ");
   }
-}, dependencies: [RouterLink, RouterLinkActive, FaIconComponent, Editor, PrimeTemplate, \u0275NgNoValidate, NgControlStatus, NgControlStatusGroup, NgModel, NgForm, TranslatePipe], styles: ['\n\n.container-content[_ngcontent-%COMP%] {\n  padding: 1rem 0;\n  align-items: start;\n}\nform.container-content[_ngcontent-%COMP%] {\n  padding-left: 1rem;\n  padding-right: 2rem;\n}\n.title[_ngcontent-%COMP%] {\n  display: flex;\n  width: fit-content;\n  flex-direction: column;\n  align-items: start;\n  padding: 1rem;\n  margin-bottom: 10px;\n}\n.ms-1-5[_ngcontent-%COMP%] {\n  margin-right: 2.5rem;\n}\nh6[_ngcontent-%COMP%] {\n  color: #615E83;\n}\n.text-dark[_ngcontent-%COMP%] {\n  color: var(--dark);\n}\n.title[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin-bottom: 20px;\n}\n.title.stars[_ngcontent-%COMP%] {\n  position: relative;\n  width: fit-content;\n  padding: 1.5rem 1rem 1rem 3rem;\n  margin: 1rem 0 0.5rem 0;\n}\n.title.stars[_ngcontent-%COMP%]::before, \n.title.stars[_ngcontent-%COMP%]::after {\n  content: "";\n  position: absolute;\n  background-image: url("./media/golden_star.png");\n  background-repeat: no-repeat;\n  background-size: 100%;\n  width: 13.88px;\n  height: 16.33px;\n}\n.title[_ngcontent-%COMP%]::before {\n  top: 0;\n  right: 0;\n}\n.title[_ngcontent-%COMP%]::after {\n  bottom: 0;\n  left: 0;\n}\nlabel[_ngcontent-%COMP%], \nspan[_ngcontent-%COMP%] {\n  color: var(--dark-gray);\n}\n.btn.btn-primary[_ngcontent-%COMP%] {\n  width: 164.35px;\n}\ninput[type=text][_ngcontent-%COMP%] {\n  width: 55%;\n}\n.ql-formats[_ngcontent-%COMP%] {\n  border-left: 0.75px solid var(--soft-dark);\n  padding: 10px;\n  margin: 0 !important;\n}\n.ql-formats[_ngcontent-%COMP%]:last-of-type {\n  border-left: none;\n}\n.form-group.radio[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  background-color: #FCFCFC;\n  border-radius: 10px;\n  border: 0.75px solid var(--soft-dark);\n  box-shadow: 0px 2px 7.2px -5px #94949433;\n  padding: 15px 10px;\n}\n.form-group.radio[_ngcontent-%COMP%]::before {\n  content: "";\n  position: absolute;\n  background-image: url("./media/mail_.png");\n  background-repeat: no-repeat;\n  background-size: 100%;\n  width: 173px;\n  height: 130px;\n  top: -119px;\n  left: 0;\n}\n.radio-group[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: start;\n  align-items: center;\n  margin-top: 1rem;\n  gap: 1rem;\n}\n.radio-group[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  display: inline-flex;\n  gap: 3px;\n}\nspan[_ngcontent-%COMP%]   label[_ngcontent-%COMP%] {\n  color: var(--dark);\n}\n/*# sourceMappingURL=prob.component.css.map */'] });
+}
+function ProbComponent_div_4_ng_template_28_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "h6", 43);
+    \u0275\u0275element(1, "fa-icon", 33);
+    \u0275\u0275text(2);
+    \u0275\u0275pipe(3, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(4, "span")(5, "span");
+    \u0275\u0275text(6);
+    \u0275\u0275pipe(7, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(8, "span", 44);
+    \u0275\u0275text(9, " dsfd ");
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext(2);
+    \u0275\u0275advance();
+    \u0275\u0275property("icon", ctx_r1.faEye);
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(3, 3, "prop.description_check"), " ");
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(7, 5, "prop.topic"), ": ");
+  }
+}
+function ProbComponent_div_4_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r3 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 5)(1, "div", 31)(2, "h5");
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "p");
+    \u0275\u0275text(6);
+    \u0275\u0275pipe(7, "translate");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(8, "div", 32)(9, "h6");
+    \u0275\u0275element(10, "fa-icon", 33);
+    \u0275\u0275text(11);
+    \u0275\u0275pipe(12, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(13, "div", 34)(14, "span");
+    \u0275\u0275element(15, "input", 35);
+    \u0275\u0275pipe(16, "translate");
+    \u0275\u0275elementStart(17, "label", 36);
+    \u0275\u0275text(18);
+    \u0275\u0275pipe(19, "translate");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(20, "span");
+    \u0275\u0275element(21, "input", 37);
+    \u0275\u0275pipe(22, "translate");
+    \u0275\u0275elementStart(23, "label", 38);
+    \u0275\u0275text(24);
+    \u0275\u0275pipe(25, "translate");
+    \u0275\u0275elementEnd()()()();
+    \u0275\u0275elementStart(26, "div", 39)(27, "p-editor", 40);
+    \u0275\u0275twoWayListener("ngModelChange", function ProbComponent_div_4_Template_p_editor_ngModelChange_27_listener($event) {
+      \u0275\u0275restoreView(_r3);
+      const ctx_r1 = \u0275\u0275nextContext();
+      \u0275\u0275twoWayBindingSet(ctx_r1.articleTemplate, $event) || (ctx_r1.articleTemplate = $event);
+      return \u0275\u0275resetView($event);
+    });
+    \u0275\u0275template(28, ProbComponent_div_4_ng_template_28_Template, 10, 7, "ng-template", 14);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(29, "div", 41)(30, "button", 42);
+    \u0275\u0275text(31);
+    \u0275\u0275pipe(32, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(33, "span");
+    \u0275\u0275text(34);
+    \u0275\u0275pipe(35, "translate");
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(4, 15, "prop.message"));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(7, 17, "prop.message_description"));
+    \u0275\u0275advance(4);
+    \u0275\u0275property("icon", ctx_r1.faCalendarCheck);
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(12, 19, "prop.design"), " ");
+    \u0275\u0275advance(4);
+    \u0275\u0275propertyInterpolate("value", \u0275\u0275pipeBind1(16, 21, "prop.modern"));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(19, 23, "prop.modern"));
+    \u0275\u0275advance(3);
+    \u0275\u0275propertyInterpolate("value", \u0275\u0275pipeBind1(22, 25, "prop.modern_smart"));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(25, 27, "prop.modern_smart"));
+    \u0275\u0275advance(3);
+    \u0275\u0275styleMap(\u0275\u0275pureFunction0(33, _c16));
+    \u0275\u0275twoWayProperty("ngModel", ctx_r1.articleTemplate);
+    \u0275\u0275property("readonly", true);
+    \u0275\u0275advance(3);
+    \u0275\u0275property("routerLink", \u0275\u0275pureFunction0(34, _c23));
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(32, 29, "prop.button"), " ");
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(35, 31, "prop.help"), " ");
+  }
+}
+var _ProbComponent = class _ProbComponent {
+  constructor() {
+    this.faEye = faEye;
+    this.faCalendarCheck = faCalendarCheck;
+    this.isNextStep = false;
+    this.isTopicFilled = true;
+    this.isArticleFilled = true;
+    this.articleTemplate = [];
+    this._topic = "";
+    this._article = [];
+  }
+  get topic() {
+    return this._topic;
+  }
+  set topic(value) {
+    this._topic = value;
+  }
+  get article() {
+    return this._article;
+  }
+  set article(value) {
+    this._article = value;
+  }
+  submit() {
+    const preLoader = document.getElementById("preLoader");
+    if (this.topic !== "") {
+      this.isTopicFilled = true;
+      if (this.article.length > 0) {
+        this.isArticleFilled = true;
+        preLoader.style.opacity = "1";
+        preLoader.style.display = "block";
+        setTimeout(() => {
+          preLoader.style.display = "none";
+          preLoader.style.opacity = "0";
+        }, 500);
+        this.articleTemplate = this.article;
+        this.isNextStep = true;
+      } else {
+        this.isArticleFilled = false;
+      }
+    } else {
+      this.isTopicFilled = false;
+    }
+  }
+};
+_ProbComponent.\u0275fac = function ProbComponent_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _ProbComponent)();
+};
+_ProbComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _ProbComponent, selectors: [["prob"]], decls: 5, vars: 2, consts: [["id", "preLoader"], [1, "bg"], [1, "container"], ["class", "container-content", 4, "ngIf"], ["class", "container-content ", 4, "ngIf"], [1, "container-content"], [1, "title", "stars"], [1, "form-group"], ["for", "smallDescription", 1, "mb-2"], ["id", "smallDescription", "name", "topic", "type", "text", 1, "form-control", 3, "ngModelChange", "ngModel"], ["class", "warning", 4, "ngIf"], [1, "form-group", "mt-2", "mt-sm-4"], ["for", "description", 1, "mb-2"], ["name", "article", 1, "p-ico", 3, "ngModelChange", "ngModel"], ["pTemplate", "header"], [1, "d-flex", "text-center", "flex-column", "align-items-center", "justify-content-center", "mt-2", "mt-sm-3"], [1, "btn", "btn-primary", "active", "mb-2", 3, "click"], [1, "warning"], [1, "ql-formats"], ["aria-label", "Insert Image", "type", "button", 1, "ql-image"], ["aria-label", "Insert Link", "type", "button", 1, "ql-link", 2, "transform", "rotate(90deg)"], ["value", "ordered", "aria-label", "Ordered List", "type", "button", 1, "ql-list"], ["value", "bullet", "aria-label", "Unordered List", "type", "button", 1, "ql-list"], [1, "ql-align"], ["aria-label", "Bold", "type", "button", 1, "ql-bold"], ["aria-label", "Italic", "type", "button", 1, "ql-italic"], ["aria-label", "Underline", "type", "button", 1, "ql-underline"], ["aria-label", "Strike", "type", "button", 1, "ql-strike"], ["aria-label", "background color", "type", "button", 1, "ql-background"], ["aria-label", "text color", "type", "button", 1, "ql-color"], [1, "ql-size"], [1, "title"], [1, "form-group", "radio"], [2, "margin-left", "2px", 3, "icon"], [1, "radio-group"], ["checked", "", "type", "radio", "id", "design1", "name", "design", 3, "value"], ["for", "design1"], ["type", "radio", "id", "design2", "name", "design", 3, "value"], ["for", "design2"], [1, "form-group", "mt-2"], [1, "p-template", 3, "ngModelChange", "ngModel", "readonly"], [1, "d-flex", "text-center", "flex-column", "align-items-center", "justify-content-center", "mt-2", "mt-sm-4"], ["routerLinkActive", "router-link-active", 1, "btn", "btn-primary", "active", "mb-2", 3, "routerLink"], [1, "mb-3"], [1, "ms-1", "text-dark"]], template: function ProbComponent_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275element(0, "preloader", 0);
+    \u0275\u0275elementStart(1, "section", 1)(2, "div", 2);
+    \u0275\u0275template(3, ProbComponent_form_3_Template, 25, 22, "form", 3)(4, ProbComponent_div_4_Template, 36, 35, "div", 4);
+    \u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    \u0275\u0275advance(3);
+    \u0275\u0275property("ngIf", !ctx.isNextStep);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx.isNextStep);
+  }
+}, dependencies: [NgIf, RouterLink, RouterLinkActive, FaIconComponent, Editor, PrimeTemplate, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, NgModel, NgForm, PreloaderComponent, TranslatePipe], styles: ['\n\n.container-content[_ngcontent-%COMP%] {\n  padding: 1rem 0;\n  align-items: start;\n}\nform.container-content[_ngcontent-%COMP%] {\n  padding-left: 1rem;\n  padding-right: 2rem;\n}\nh5[_ngcontent-%COMP%], \np[_ngcontent-%COMP%] {\n  margin: 0;\n}\n.title[_ngcontent-%COMP%] {\n  display: flex;\n  width: fit-content;\n  flex-direction: column;\n  align-items: start;\n  padding: 0rem 1rem 1.5rem 1rem;\n  gap: 5px;\n}\n.ms-1-5[_ngcontent-%COMP%] {\n  margin-right: 2.5rem;\n}\nh6[_ngcontent-%COMP%] {\n  color: #615E83;\n}\n.text-dark[_ngcontent-%COMP%] {\n  color: var(--dark);\n}\n.title.stars[_ngcontent-%COMP%] {\n  position: relative;\n  width: fit-content;\n  padding: 1.5rem 1rem 1rem 3rem;\n  margin-bottom: 0.5rem;\n}\n.title.stars[_ngcontent-%COMP%]::before, \n.title.stars[_ngcontent-%COMP%]::after {\n  content: "";\n  position: absolute;\n  background-image: url("./media/golden_star.png");\n  background-repeat: no-repeat;\n  background-size: 100%;\n  width: 13.88px;\n  height: 16.33px;\n}\n.title[_ngcontent-%COMP%]::before {\n  top: 0;\n  right: 0;\n}\n.title[_ngcontent-%COMP%]::after {\n  bottom: 0;\n  left: 0;\n}\nlabel[_ngcontent-%COMP%], \nspan[_ngcontent-%COMP%] {\n  color: var(--dark-gray);\n}\n.btn.btn-primary[_ngcontent-%COMP%] {\n  width: 164.35px;\n}\ninput[type=text][_ngcontent-%COMP%] {\n  width: 55%;\n}\n.ql-formats[_ngcontent-%COMP%] {\n  border-left: 0.75px solid var(--soft-dark);\n  padding: 10px;\n  margin: 0 !important;\n}\n.ql-formats[_ngcontent-%COMP%]:last-of-type {\n  border-left: none;\n}\n.form-group.radio[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  background-color: #FCFCFC;\n  border-radius: 10px;\n  border: 0.75px solid var(--soft-dark);\n  box-shadow: 0px 2px 7.2px -5px #94949433;\n  padding: 15px 10px;\n}\n.form-group.radio[_ngcontent-%COMP%]::before {\n  content: "";\n  position: absolute;\n  background-image: url("./media/mail_.png");\n  background-repeat: no-repeat;\n  background-size: 100%;\n  width: 173px;\n  height: 130px;\n  top: -119px;\n  left: 0;\n}\n.radio-group[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: start;\n  align-items: center;\n  margin-top: 1rem;\n  gap: 1rem;\n}\n.radio-group[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n  display: inline-flex;\n  gap: 3px;\n}\nspan[_ngcontent-%COMP%]   label[_ngcontent-%COMP%] {\n  color: var(--dark);\n}\nspan.warning[_ngcontent-%COMP%] {\n  color: var(--danger);\n  margin: 5px 0;\n}\n/*# sourceMappingURL=prob.component.css.map */'] });
 var ProbComponent = _ProbComponent;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(ProbComponent, { className: "ProbComponent", filePath: "src\\app\\prob\\prob.component.ts", lineNumber: 9 });
 })();
 
 // src/app/submission/submission.component.ts
-function SubmissionComponent_ng_template_19_Template(rf, ctx) {
+function SubmissionComponent_div_3_ng_template_17_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275element(0, "span");
   }
 }
+function SubmissionComponent_div_3_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 5)(1, "div", 6)(2, "h4");
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "p");
+    \u0275\u0275text(6);
+    \u0275\u0275pipe(7, "translate");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275element(8, "div", 7);
+    \u0275\u0275elementStart(9, "div", 8)(10, "label", 9)(11, "span");
+    \u0275\u0275text(12);
+    \u0275\u0275pipe(13, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(14, "span");
+    \u0275\u0275text(15);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(16, "p-progressBar", 10);
+    \u0275\u0275template(17, SubmissionComponent_div_3_ng_template_17_Template, 1, 0, "ng-template", 11);
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(4, 5, "submission.title"));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(7, 7, "submission.description"));
+    \u0275\u0275advance(6);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(13, 9, "submission.loading"));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1("", ctx_r0.loadingCount, "/100");
+    \u0275\u0275advance();
+    \u0275\u0275property("value", ctx_r0.loadingCount);
+  }
+}
+function SubmissionComponent_div_4_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 5)(1, "div", 6)(2, "h4");
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "translate");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "p");
+    \u0275\u0275text(6);
+    \u0275\u0275pipe(7, "translate");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275element(8, "div", 12);
+    \u0275\u0275elementStart(9, "div", 13)(10, "a", 14);
+    \u0275\u0275text(11);
+    \u0275\u0275pipe(12, "translate");
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(4, 3, "submission.success"));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(7, 5, "submission.success_description"));
+    \u0275\u0275advance(5);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(12, 7, "submission.exit"), " ");
+  }
+}
 var _SubmissionComponent = class _SubmissionComponent {
+  constructor() {
+    this.isDone = false;
+    this.load();
+  }
+  load(currentValue = 0) {
+    this.loadingCount = currentValue;
+    if (currentValue < 100) {
+      setTimeout(() => {
+        return this.load(currentValue + 1);
+      }, 500);
+    } else {
+      const preLoader = document.getElementById("preLoader");
+      setTimeout(() => {
+        preLoader.style.opacity = "1";
+        preLoader.style.display = "block";
+        this.isDone = true;
+        setTimeout(() => {
+          preLoader.style.display = "none";
+          preLoader.style.opacity = "0";
+        }, 700);
+      }, 1500);
+      return 0;
+    }
+    return 0;
+  }
 };
 _SubmissionComponent.\u0275fac = function SubmissionComponent_Factory(__ngFactoryType__) {
   return new (__ngFactoryType__ || _SubmissionComponent)();
 };
-_SubmissionComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _SubmissionComponent, selectors: [["submission"]], decls: 33, vars: 19, consts: [[1, "submission"], [1, "container"], [1, "d-none", "container-content"], [1, "title"], [1, "image"], [1, "loading"], ["for", "loadingBar", 1, "w-100", "d-flex", "align-items-center", "justify-content-between", "mb-2"], ["id", "loadingBar", 3, "value"], ["pTemplate", "content"], [1, "container-content"], [1, "done_image"], [1, "exit"], [1, "btn", "btn-link"]], template: function SubmissionComponent_Template(rf, ctx) {
+_SubmissionComponent.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _SubmissionComponent, selectors: [["submission"]], decls: 5, vars: 2, consts: [["id", "preLoader"], [1, "submission"], [1, "container"], ["class", "container-content", 4, "ngIf"], ["class", "container-content ", 4, "ngIf"], [1, "container-content"], [1, "title"], [1, "image"], [1, "loading"], ["for", "loadingBar", 1, "w-100", "d-flex", "align-items-center", "justify-content-between", "mb-2"], ["id", "loadingBar", 3, "value"], ["pTemplate", "content"], [1, "done_image"], [1, "exit"], [1, "btn", "btn-link"]], template: function SubmissionComponent_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "section", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "h4");
-    \u0275\u0275text(5);
-    \u0275\u0275pipe(6, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "p");
-    \u0275\u0275text(8);
-    \u0275\u0275pipe(9, "translate");
+    \u0275\u0275element(0, "preloader", 0);
+    \u0275\u0275elementStart(1, "section", 1)(2, "div", 2);
+    \u0275\u0275template(3, SubmissionComponent_div_3_Template, 18, 11, "div", 3)(4, SubmissionComponent_div_4_Template, 13, 9, "div", 4);
     \u0275\u0275elementEnd()();
-    \u0275\u0275element(10, "div", 4);
-    \u0275\u0275elementStart(11, "div", 5)(12, "label", 6)(13, "span");
-    \u0275\u0275text(14);
-    \u0275\u0275pipe(15, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "span");
-    \u0275\u0275text(17, "10/100");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(18, "p-progressBar", 7);
-    \u0275\u0275template(19, SubmissionComponent_ng_template_19_Template, 1, 0, "ng-template", 8);
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(20, "div", 9)(21, "div", 3)(22, "h4");
-    \u0275\u0275text(23);
-    \u0275\u0275pipe(24, "translate");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(25, "p");
-    \u0275\u0275text(26);
-    \u0275\u0275pipe(27, "translate");
-    \u0275\u0275elementEnd()();
-    \u0275\u0275element(28, "div", 10);
-    \u0275\u0275elementStart(29, "div", 11)(30, "a", 12);
-    \u0275\u0275text(31);
-    \u0275\u0275pipe(32, "translate");
-    \u0275\u0275elementEnd()()()()();
   }
   if (rf & 2) {
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(6, 7, "submission.title"));
     \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(9, 9, "submission.description"));
-    \u0275\u0275advance(6);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(15, 11, "submission.loading"));
-    \u0275\u0275advance(4);
-    \u0275\u0275property("value", 10);
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(24, 13, "submission.success"));
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind1(27, 15, "submission.success_description"));
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind1(32, 17, "submission.exit"), " ");
+    \u0275\u0275property("ngIf", !ctx.isDone);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx.isDone);
   }
-}, dependencies: [PrimeTemplate, ProgressBar, TranslatePipe], styles: ['\n\n.container-content[_ngcontent-%COMP%] {\n  align-items: center;\n  padding: 4rem 0;\n}\n.title[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  padding: 0 20px;\n  width: 100%;\n}\n.image[_ngcontent-%COMP%], \n.done_image[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n.image[_ngcontent-%COMP%] {\n  width: 228PX;\n  height: 228PX;\n  border: 8.19px solid var(--soft-primary);\n  border-radius: 50%;\n  background-image: url("./media/paper_plane.gif");\n}\n.done_image[_ngcontent-%COMP%] {\n  width: 258PX;\n  height: 258PX;\n  background-image: url("./media/done.gif");\n}\n.loading[_ngcontent-%COMP%] {\n  margin: 0 auto;\n  width: 70%;\n}\n.exit[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.exit[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  text-decoration: none;\n}\n/*# sourceMappingURL=submission.component.css.map */'] });
+}, dependencies: [NgIf, PrimeTemplate, ProgressBar, PreloaderComponent, TranslatePipe], styles: ['\n\n.container-content[_ngcontent-%COMP%] {\n  align-items: center;\n  padding: 4rem 0;\n}\n.title[_ngcontent-%COMP%] {\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  padding: 0 20px;\n  width: 100%;\n}\n.image[_ngcontent-%COMP%], \n.done_image[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n.image[_ngcontent-%COMP%] {\n  width: 228PX;\n  height: 228PX;\n  border: 8.19px solid var(--soft-primary);\n  border-radius: 50%;\n  background-image: url("./media/paper_plane.gif");\n}\n.done_image[_ngcontent-%COMP%] {\n  width: 258PX;\n  height: 258PX;\n  background-image: url("./media/done.gif");\n}\n.loading[_ngcontent-%COMP%] {\n  margin: 0 auto;\n  width: 70%;\n}\n.exit[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.exit[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  text-decoration: none;\n}\n/*# sourceMappingURL=submission.component.css.map */'] });
 var SubmissionComponent = _SubmissionComponent;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(SubmissionComponent, { className: "SubmissionComponent", filePath: "src\\app\\submission\\submission.component.ts", lineNumber: 8 });
