@@ -8,13 +8,18 @@ form.container-content {
   padding-right: 2rem;
 }
 
+h5,
+p {
+  margin: 0;
+}
+
 .title {
   display: flex;
   width: fit-content;
   flex-direction: column;
   align-items: start;
-  padding: 1rem;
-  margin-bottom: 10px;
+  padding: 0rem 1rem 1.5rem 1rem;
+  gap: 5px;
 }
 
 .ms-1-5 {
@@ -29,15 +34,11 @@ h6 {
   color: var(--dark);
 }
 
-.title p {
-  margin-bottom: 20px;
-}
-
 .title.stars {
   position: relative;
   width: fit-content;
   padding: 1.5rem 1rem 1rem 3rem;
-  margin: 1rem 0 0.5rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .title.stars::before,
@@ -122,4 +123,9 @@ input[type="text"] {
 
 span label {
   color: var(--dark);
+}
+
+span.warning {
+  color: var(--danger);
+  margin: 5px 0;
 }

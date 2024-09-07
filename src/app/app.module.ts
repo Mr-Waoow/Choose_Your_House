@@ -19,6 +19,7 @@ import { SelectionComponent } from './selection/selection.component';
 import { ProbComponent } from './prob/prob.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PreloaderComponent } from './shared/preloader/preloader.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SelectionComponent,
     ProbComponent,
     SubmissionComponent,
+    PreloaderComponent,
   ],
   imports: [
     BrowserModule,

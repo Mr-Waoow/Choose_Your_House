@@ -1,32 +1,62 @@
-.sec1 {
-  width: 45%;
-  display: inline-block;
+.pre-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.pre-step>div {
+  padding-top: 4rem;
+  height: 100%;
+}
+
+.container-content {
+  justify-content: flex-start;
+}
+
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+.description {
+  flex-basis: 45%;
   background: url(../../../public/images/bg1.png) no-repeat center center / cover;
 }
 
-.sec2 {
-  width: 55%;
-  display: inline-block;
+.description .container {
+  padding: 0 40px;
 }
 
-.ad {
+
+.description .title {
+  gap: 10px;
+  margin-bottom: 3rem;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-weight: 500;
+  gap: 5px;
+}
+
+.title .ad {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 500;
+  margin-bottom: 3rem;
 }
 
-.ad span {
-  opacity: 0.5;
-}
-
-.img-icon {
+.ad .img-icon {
   width: 22px;
   display: block;
 }
 
-.description {
-  margin-top: 58px;
+.title span {
+  opacity: 0.5;
 }
 
 .description ul {
@@ -76,13 +106,20 @@ select:focus {
   box-shadow: 0 0 1px 0.2px var(--soft-primary);
 }
 
+.form {
+  flex-basis: 55%;
+}
+
+.form .container-content {
+  gap: 10px;
+}
+
 .select-btn {
   width: 100%;
   align-items: start;
-  padding: 10px 15px 25px 5px;
+  padding: 10px 15px 20px 5px;
   border: 0.75px solid var(--soft-dark);
   box-shadow: 0px 2px 7.2px -5px #94949433;
-  margin-bottom: 20px;
   -o-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -100,6 +137,9 @@ select:focus {
 }
 
 .project-name {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding-top: 10px;
   border-top: 0.75px solid var(--soft-dark);
 }
@@ -130,56 +170,9 @@ select:focus {
 
 form .btn.btn-primary {
   width: 198px;
-  margin-right: auto;
-  margin-top: 4rem;
+  margin: auto auto 1rem 0;
 }
 
-/*responsive*/
-
-@media (max-width: 768px) {
-  section {
-    height: auto;
-    padding-bottom: 3rem;
-  }
-
-  .sec1 {
-    width: 100%;
-  }
-
-  .sec2 {
-    width: 100%;
-  }
-
-  .bg::before {
-    display: none;
-  }
-
-  .description {
-    margin-top: 0;
-  }
-
-  .description ul li {
-    gap: 10px;
-  }
-
-  .select-btn {
-    padding: 10px 15px 15px 5px;
-  }
-
-  .select-btn img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .select-btn .text {
-    font-size: 14px;
-  }
-
-  .project-name {
-    padding-top: 5px;
-  }
-
-  form .btn {
-    width: 100%;
-  }
+.warning {
+  color: var(--danger);
 }

@@ -3,7 +3,7 @@ import { faArrowLeft, faArrowRight, faXmark } from '@fortawesome/free-solid-svg-
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
-import { DataSharingService } from './shared/data-sharing.service';
+import { DataSharingService } from './shared/services/data-sharing.service';
 
 @Component({
   selector: 'house',

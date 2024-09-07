@@ -54,7 +54,9 @@
     "modern": "Modern design",
     "modern_smart": "Modern and smart design",
     "description_check": "Preview the house description",
-    "topic": "The topic"
+    "topic": "The topic",
+    "warningTopic": "Please write a brief description of the house",
+    "warningArticle": "Please write an expressive description of the house"
   },
   "submission": {
     "title": "Your Housing Message is Being Sent",

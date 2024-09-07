@@ -98,7 +98,7 @@ span.text {
   color: var(--gray);
 }
 
-button {
+button.selecting {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -113,16 +113,16 @@ button {
   transition: all 0.3s ease;
 }
 
-button.active {
-  border: 0.75px solid var(--primary);
+button.selecting.active {
+  border: 0.75px solid var(--primary) !important;
 }
 
-button:hover {
-  box-shadow: 0px 2px 7.2px 0px #94949433;
+button.selecting:hover {
+  box-shadow: 0px 2px 7.2px 0px #94949433 !important;
 }
 
 
-button .icon {
+button.selecting .icon {
   width: 16px;
   height: 16px;
   background: var(--light);
@@ -135,9 +135,9 @@ button .icon {
   align-items: center;
 }
 
-button.active .icon {
-  background: var(--primary);
-  color: var(--white);
+button.selecting.active .icon {
+  background: var(--primary) !important;
+  color: var(--white) !important;
 }
 
 .btn.btn-primary {
@@ -261,25 +261,25 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
 
 @media (max-width: 2000px) {
   .container {
-    max-width: 1680px;
+    max-width: 1921px;
   }
 }
 
 @media (max-width: 1800px) {
   .container {
-    max-width: 1500px;
+    max-width: 1729px;
   }
 }
 
 @media (max-width: 1600px) {
   .container {
-    max-width: 1320px;
+    max-width: 1537px;
   }
 }
 
 @media (max-width: 1400px) {
   .container {
-    max-width: 1140px;
+    max-width: 1345px;
   }
 }
 
@@ -291,7 +291,7 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
 
 @media (max-width: 992px) {
   .container {
-    max-width: 100%;
+    max-width: 953px;
   }
 }
 
@@ -314,6 +314,26 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
 
   p {
     font-size: 16px;
+  }
+  .pre-step{
+    flex-direction: column;
+    height: auto;
+  }
+
+  .pre-step .container-content{
+    justify-content: start;
+  }
+
+  .description {
+    width: 100%;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .form .select-btn {
+    padding: 10px !important;
   }
 }
 
@@ -369,23 +389,23 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
   }
 
   .submition,
-  .buttons {
+  .button.selectings {
     margin-top: 2rem !important;
   }
 
-  .buttons {
+  .button.selectings {
     gap: 10px !important;
     flex-direction: column !important;
     align-items: center !important;
   }
 
-  .buttons .home-button {
+  .button.selectings .home-button.selecting {
     width: 160px !important;
     height: 100px !important;
     padding: 10px !important;
   }
 
-  .home-button img {
+  .home-button.selecting img {
     width: 40px !important;
     height: 40px !important;
   }

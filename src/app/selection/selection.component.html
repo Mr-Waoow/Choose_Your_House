@@ -1,12 +1,13 @@
+<preloader id="preLoader"></preloader>
 <section class="bg">
   <div class="container">
-    <form class="d-none container-content">
+    <form *ngIf="!this.isNextStep" class="container-content">
       <div class="title">
         <h5>{{'selection.title' | translate}}</h5>
         <p>{{'selection.description' | translate}}</p>
       </div>
       <div class="buttons">
-        <button class="home-button">
+        <button (click)="this.selecteBtn($event, 'location')" class="home-button selecting">
           <img src="./images/icon/home.png" alt="home">
           <h6>
             {{'selection.location.cairo' | translate}}
@@ -15,7 +16,7 @@
             <fa-icon [icon]="faCheck"></fa-icon>
           </span>
         </button>
-        <button class="home-button">
+        <button (click)="this.selecteBtn($event, 'location')" class="home-button selecting">
           <img src="./images/icon/truck.png" alt="truck">
           <h6>
             {{'selection.location.north_coast' | translate}}
@@ -24,7 +25,7 @@
             <fa-icon [icon]="faCheck"></fa-icon>
           </span>
         </button>
-        <button class="home-button">
+        <button (click)="this.selecteBtn($event, 'location')" class="home-button selecting selecting">
           <img src="./images/icon/person.png" alt="person">
           <h6>
             {{'selection.location.dahab' | translate}}
@@ -35,10 +36,10 @@
         </button>
       </div>
       <div class="submition">
-        <a class="btn btn-primary">
+        <button (click)="this.nextBtn()" [disabled]="!this.isLocationSelected" class="btn btn-primary {{this.active}}">
           <img src="./images/icon/right_arrow.png" alt="right_arrow">
           {{'selection.button' | translate}}
-        </a>
+        </button>
         <span>
           {{'selection.help' | translate}}
         </span>
@@ -47,13 +48,13 @@
         </span>
       </div>
     </form>
-    <form class="container-content">
+    <form *ngIf="this.isNextStep" class="container-content">
       <div class="title">
         <h5>{{'selection.house_type' | translate}}</h5>
         <p>{{'selection.house_type_description' | translate}}</p>
       </div>
       <div class="buttons">
-        <button class="home-button">
+        <button (click)="this.selecteBtn($event, 'type')" class="home-button selecting">
           <img src="./images/icon/camera_film.png" alt="camera_film">
           <h6>
             {{'selection.types.villa' | translate}}
@@ -62,7 +63,7 @@
             <fa-icon [icon]="faCheck"></fa-icon>
           </span>
         </button>
-        <button class="home-button">
+        <button (click)="this.selecteBtn($event, 'type')" class="home-button selecting">
           <img src="./images/icon/building_primary.png" alt="building_primary">
           <h6>
             {{'selection.types.duplex_apartment' | translate}}
@@ -71,7 +72,7 @@
             <fa-icon [icon]="faCheck"></fa-icon>
           </span>
         </button>
-        <button class="home-button">
+        <button (click)="this.selecteBtn($event, 'type')" class="home-button selecting">
           <img src="./images/icon/building_success.png" alt="building_success">
           <h6>
             {{'selection.types.apartment' | translate}}
@@ -82,9 +83,9 @@
         </button>
       </div>
       <div class="submition">
-        <a [routerLink]="['/Describe-House']" routerLinkActive="router-link-active" class="btn btn-primary">
+        <button id="submitType" [disabled]="!this.isTypeSelected" [routerLink]="['/Describe-House']" routerLinkActive="router-link-active" class="btn btn-primary {{this.active}}">
           {{'selection.next' | translate}}
-        </a>
+        </button>
         <span>
           {{'selection.help' | translate}}
         </span>
