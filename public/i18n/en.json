@@ -38,7 +38,7 @@
     "types": {
       "villa": "Villa",
       "duplex_apartment": "Duplex apartment",
-      "apartment": "Residential apartment"
+      "apartment": "Normal apartment"
     },
     "next": "Next"
   },
@@ -56,7 +56,8 @@
     "description_check": "Preview the house description",
     "topic": "The topic",
     "warningTopic": "Please write a brief description of the house",
-    "warningArticle": "Please write an expressive description of the house"
+    "warningArticle": "Please write an expressive description of the house",
+    "warningRadio": "Please choose the house design"
   },
   "submission": {
     "title": "Your Housing Message is Being Sent",

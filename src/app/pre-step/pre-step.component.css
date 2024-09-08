@@ -172,7 +172,3 @@ form .btn.btn-primary {
   width: 198px;
   margin: auto auto 1rem 0;
 }
-
-.warning {
-  color: var(--danger);
-}

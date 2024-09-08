@@ -1,0 +1,46 @@
+<preloader></preloader>
+<div class="container-content ">
+  <div class="title">
+    <h5>{{'prop.message' | translate}}</h5>
+    <p>{{'prop.message_description' | translate}}</p>
+  </div>
+  <div class="form-group radio {{this.classEnglish}}">
+    <h6>
+      <fa-icon style="margin-left: 2px;" [icon]="faCalendarCheck"></fa-icon>
+      {{'prop.design' | translate}}
+    </h6>
+    <div class="radio-group">
+      <span>
+        <input (change)="this.onChange()" type="radio" id="design1" name="design" value="{{'prop.modern' | translate}}">
+        <label for="design1">{{'prop.modern' | translate}}</label>
+      </span>
+      <span>
+        <input (change)="this.onChange()" type="radio" id="design2" name="design" value="{{'prop.modern_smart' | translate}}">
+        <label for="design2">{{'prop.modern_smart' | translate}}</label>
+      </span>
+      <span *ngIf="this.isErrorMessage && !this.isRadioClicked" class="warning"> {{'warningRadio' | translate}} </span>
+    </div>
+  </div>
+  <div class="form-group mt-2">
+    <p-editor class="p-template" [(ngModel)]="this.article" [readonly]="true" [style]="{ height: '240px' }">
+      <ng-template pTemplate="header">
+        <h6 class="mb-3">
+          <fa-icon style="margin-left: 2px;" [icon]="faEye"></fa-icon>
+          {{'prop.description_check' | translate}}
+        </h6>
+        <span>
+          <span> {{'prop.topic' | translate}}: </span>
+          <span class="ms-1 text-dark"> {{this.topic}} </span>
+        </span>
+      </ng-template>
+    </p-editor>
+  </div>
+  <div class="d-flex text-center flex-column align-items-center justify-content-center mt-2 mt-sm-4">
+    <button (click)="this.submit()" class="btn btn-primary active mb-2">
+      {{'prop.button' | translate}}
+    </button>
+    <span>
+      {{'prop.help' | translate}}
+    </span>
+  </div>
+</div>

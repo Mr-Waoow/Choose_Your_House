@@ -108,6 +108,11 @@ input[type="text"] {
   left: 0;
 }
 
+.form-group.radio.english::before {
+  left: auto;
+  right: 0;
+}
+
 .radio-group {
   display: flex;
   justify-content: start;
@@ -123,9 +128,4 @@ input[type="text"] {
 
 span label {
   color: var(--dark);
-}
-
-span.warning {
-  color: var(--danger);
-  margin: 5px 0;
 }

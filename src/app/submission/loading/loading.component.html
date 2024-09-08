@@ -1,0 +1,19 @@
+<preloader></preloader>
+<div class="container-content">
+  <div class="title">
+    <h4>{{'submission.title' | translate}}</h4>
+    <p>{{'submission.description' | translate}}</p>
+  </div>
+  <div class="image"></div>
+  <div class="loading">
+    <label class="w-100 d-flex align-items-center justify-content-between mb-2" for="loadingBar">
+      <span>{{'submission.loading' | translate}}</span>
+      <span>{{this.loadingCount}}/100</span>
+    </label>
+    <p-progressBar id="loadingBar" [value]="this.loadingCount">
+      <ng-template pTemplate="content" let-value>
+        <span></span>
+      </ng-template>
+    </p-progressBar>
+  </div>
+</div>

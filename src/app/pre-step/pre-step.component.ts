@@ -39,7 +39,9 @@ export class PreStepComponent {
   //Lifecycle hook.
   ngOnInit(): void {
     this.submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
-    this.translateGetLangs = this.dataSharingService.getLanguages();
+    this.dataSharingService.getLanguages().subscribe((langs) => {
+      this.translateGetLangs = langs;
+    });
   }
 
   //Send Language to parent.

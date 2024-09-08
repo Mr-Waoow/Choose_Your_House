@@ -1,5 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { faArrowLeft, faArrowRight, faXmark } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faArrowRight,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
@@ -17,6 +21,7 @@ export class HouseComponent implements OnInit {
   faArrowRight = faArrowRight;
   faArrowLeft = faArrowLeft;
   cookieValue!: string;
+  previousPage: string = '';
 
   //Constructor.
   constructor(
@@ -32,11 +37,15 @@ export class HouseComponent implements OnInit {
   ngOnInit(): void {
     this.dataSharingService.setLanguages(this.translateService.getLangs());
     this.cookieValue = this.cookieService.get('language');
-    console.log('Initial Cookie Value:', this.cookieValue); // Debugging
     this.dataSharingService.choosenLang$.subscribe((lang) => {
       this.switchLang(lang);
-      if (lang !== '')
-      this.cookieValue = lang;
+      if (lang !== '') this.cookieValue = lang;
+      this.dataSharingService.setCookieValue(this.cookieValue);
+    });
+    this.dataSharingService.previousPage$.subscribe((page) => {
+      if (page !== '') {
+        this.previousPage = page;
+      }
     });
     if (this.cookieValue) {
       this.translateService.setDefaultLang(this.cookieValue);
@@ -90,5 +99,20 @@ export class HouseComponent implements OnInit {
   //Get routerLinkActive.
   get routerLinkActive() {
     return this.router.url.split('/')[1]; // Assuming the path is at position 2
+  }
+
+  //Navigate to previous page.
+  navigateToPreviousPage(): void {
+    if (this.previousPage === this.routerLinkActive) window.location.reload();
+    else this.router.navigate([this.previousPage]);
+  }
+
+  //Exit from the application.
+  exit(): void {
+    if (window.confirm('Are you sure you want to exit the app?')) {
+      this.cookieService.delete('language');
+      this.router.navigate(['']);
+      window.close();
+    }
   }
 }

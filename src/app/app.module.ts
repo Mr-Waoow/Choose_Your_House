@@ -20,6 +20,15 @@ import { ProbComponent } from './prob/prob.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PreloaderComponent } from './shared/preloader/preloader.component';
+import { LocationComponent } from './selection/location/location.component';
+import { TypeComponent } from './selection/type/type.component';
+import { SelectionModule } from './selection/selection.module';
+import { ArticleComponent } from './prob/article/article.component';
+import { MassageComponent } from './prob/massage/massage.component';
+import { ProbModule } from './prob/prob.module';
+import { LoadingComponent } from './submission/loading/loading.component';
+import { DoneComponent } from './submission/done/done.component';
+import { SubmissionModule } from './submission/submission.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +38,12 @@ import { PreloaderComponent } from './shared/preloader/preloader.component';
     ProbComponent,
     SubmissionComponent,
     PreloaderComponent,
+    LocationComponent,
+    TypeComponent,
+    ArticleComponent,
+    MassageComponent,
+    LoadingComponent,
+    DoneComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +64,9 @@ import { PreloaderComponent } from './shared/preloader/preloader.component';
     FormsModule,
     ProgressBarModule,
     ToastModule,
+    SelectionModule,
+    ProbModule,
+    SubmissionModule,
   ],
   providers: [provideHttpClient(), [CookieService]],
   bootstrap: [HouseComponent],

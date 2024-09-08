@@ -63,6 +63,12 @@ section {
   width: 100%;
 }
 
+
+span.warning {
+  color: var(--danger) !important;
+  margin: 5px 0 !important;
+}
+
 h4,
 h5 {
   font-weight: 500;
@@ -235,6 +241,11 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
   left: 0;
 }
 
+.p-ico.english .p-editor-container::before {
+  right: 0;
+  left: auto;
+}
+
 .ql-size.ql-picker svg {
   display: none;
 }
@@ -340,6 +351,7 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
 @media (max-width: 576px) {
   section {
     height: auto;
+    min-height: 100vh;
   }
 
   .container-content {

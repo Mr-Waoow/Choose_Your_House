@@ -1,0 +1,48 @@
+<preloader id="preLoader"></preloader>
+<form class="container-content">
+  <div class="title">
+    <h5>{{'selection.house_type' | translate}}</h5>
+    <p>{{'selection.house_type_description' | translate}}</p>
+  </div>
+  <div class="buttons">
+    <button (click)="this.selecteBtn($event)" class="home-button selecting">
+      <img src="./images/icon/camera_film.png" alt="camera_film">
+      <h6>
+        {{'selection.types.villa' | translate}}
+      </h6>
+      <span class="icon">
+        <fa-icon [icon]="faCheck"></fa-icon>
+      </span>
+    </button>
+    <button (click)="this.selecteBtn($event)" class="home-button selecting">
+      <img src="./images/icon/building_primary.png" alt="building_primary">
+      <h6>
+        {{'selection.types.duplex_apartment' | translate}}
+      </h6>
+      <span class="icon">
+        <fa-icon [icon]="faCheck"></fa-icon>
+      </span>
+    </button>
+    <button (click)="this.selecteBtn($event)" class="home-button selecting">
+      <img src="./images/icon/building_success.png" alt="building_success">
+      <h6>
+        {{'selection.types.apartment' | translate}}
+      </h6>
+      <span class="icon">
+        <fa-icon [icon]="faCheck"></fa-icon>
+      </span>
+    </button>
+  </div>
+  <div class="submition">
+    <button [disabled]="!this.isSelected" [routerLink]="['/Describe-House/Article']"
+      routerLinkActive="router-link-active" class="btn btn-primary {{this.active}}">
+      {{'selection.next' | translate}}
+    </button>
+    <span>
+      {{'selection.help' | translate}}
+    </span>
+    <span>
+      {{'selection.directe' | translate}}
+    </span>
+  </div>
+</form>

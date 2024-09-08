@@ -77,9 +77,11 @@
           <p>
             {{'pre_step.project_name_description' | translate}}
           </p>
-          <input [(ngModel)]="this.text" type="text" name="project-name" class="form-control" placeholder="{{'pre_step.project_placeholder' | translate}}">
+          <input [(ngModel)]="this.text" type="text" name="project-name" class="form-control"
+            placeholder="{{'pre_step.project_placeholder' | translate}}">
         </div>
-        <button id="submitBtn" disabled type="submit" [routerLink]="['/Select-House']" routerLinkActive="router-link-active" class="btn btn-primary">
+        <button id="submitBtn" disabled type="submit" [routerLink]="['/Select-House/Location']"
+          routerLinkActive="router-link-active" class="btn btn-primary">
           {{'pre_step.submit' | translate}}
         </button>
       </form>
