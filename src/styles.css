@@ -38,8 +38,7 @@ body {
 
 section {
   padding-top: 3rem;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 .container {
@@ -326,12 +325,13 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
   p {
     font-size: 16px;
   }
-  .pre-step{
+
+  .pre-step {
     flex-direction: column;
     height: auto;
   }
 
-  .pre-step .container-content{
+  .pre-step .container-content {
     justify-content: start;
   }
 
