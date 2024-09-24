@@ -35,26 +35,30 @@ export class HouseComponent implements OnInit {
 
   //Lifecycle hook.
   ngOnInit(): void {
-    this.dataSharingService.setLanguages(this.translateService.getLangs());
-    this.cookieValue = this.cookieService.get('language');
-    this.dataSharingService.choosenLang$.subscribe((lang) => {
-      this.switchLang(lang);
-      if (lang !== '') this.cookieValue = lang;
-      this.dataSharingService.setCookieValue(this.cookieValue);
-    });
-    this.dataSharingService.previousPage$.subscribe((page) => {
-      if (page !== '') {
-        this.previousPage = page;
+    try {
+      this.dataSharingService.setLanguages(this.translateService.getLangs());
+      this.cookieValue = this.cookieService.get('language');
+      this.dataSharingService.choosenLang$.subscribe((lang) => {
+        this.switchLang(lang);
+        if (lang !== '') this.cookieValue = lang;
+        this.dataSharingService.setCookieValue(this.cookieValue);
+      });
+      this.dataSharingService.previousPage$.subscribe((page) => {
+        if (page !== '') {
+          this.previousPage = page;
+        }
+      });
+      if (this.cookieValue) {
+        this.translateService.setDefaultLang(this.cookieValue);
+        this.translateService.use(this.cookieValue);
+        this.switchLang(this.cookieValue);
+      } else {
+        this.translateService.setDefaultLang('ar');
+        this.translateService.use('ar');
+        this.switchLang('ar');
       }
-    });
-    if (this.cookieValue) {
-      this.translateService.setDefaultLang(this.cookieValue);
-      this.translateService.use(this.cookieValue);
-      this.switchLang(this.cookieValue);
-    } else {
-      this.translateService.setDefaultLang('ar');
-      this.translateService.use('ar');
-      this.switchLang('ar');
+    } catch (error) {
+      console.error('Error in languges: ', error);
     }
   }
 

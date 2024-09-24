@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/house.component.css"],
-  "sourcesContent": [".navbar-container {\r\nposition: absolute;\r\ntop: 10px;\r\nleft: 0;\r\nwidth: 100%;\r\n}\r\n\r\n.back {\r\n  opacity: 0.6;\r\n}\r\n.exit .btn {\r\n  height: 26px;\r\n  width: 26px;\r\n  border: none;\r\n  background-color: var(--light);\r\n  color: var(--black);\r\n  border-radius: 7.11px;\r\n  font-size: 14px;\r\n  padding: 0;\r\n}\r\n\r\n\r\n.exit .btn * {\r\n  opacity: 0.6;\r\n  -o-transition: all 0.2s ease;\r\n  -webkit-transition: all 0.2s ease;\r\n  -moz-transition: all 0.2s ease;\r\n  -ms-transition: all 0.2s ease;\r\n  transition: all 0.2s ease;\r\n}\r\n\r\n.exit .btn:hover * {\r\n  opacity: 1;\r\n  color: var(--danger);\r\n}\r\n\r\n.exit .btn:active * {\r\n  opacity: 1;\r\n  color: var(--hard-danger);\r\n}\r\n"],
-  "mappings": ";AAAA,CAAC;AACD,YAAU;AACV,OAAK;AACL,QAAM;AACN,SAAO;AACP;AAEA,CAAC;AACC,WAAS;AACX;AACA,CAAC,KAAK,CAAC;AACL,UAAQ;AACR,SAAO;AACP,UAAQ;AACR,oBAAkB,IAAI;AACtB,SAAO,IAAI;AACX,iBAAe;AACf,aAAW;AACX,WAAS;AACX;AAGA,CAZC,KAYK,CAZC,IAYI;AACT,WAAS;AACT,iBAAe,IAAI,KAAK;AACxB,sBAAoB,IAAI,KAAK;AAC7B,mBAAiB,IAAI,KAAK;AAC1B,kBAAgB,IAAI,KAAK;AACzB,cAAY,IAAI,KAAK;AACvB;AAEA,CArBC,KAqBK,CArBC,GAqBG,OAAO;AACf,WAAS;AACT,SAAO,IAAI;AACb;AAEA,CA1BC,KA0BK,CA1BC,GA0BG,QAAQ;AAChB,WAAS;AACT,SAAO,IAAI;AACb;",
-  "names": []
-}
