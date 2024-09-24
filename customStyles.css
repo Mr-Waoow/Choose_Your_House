@@ -9167,7 +9167,6 @@ p-editor.p-template .p-editor-container .p-editor-toolbar {
 @media (max-width: 576px) {
   section {
     height: auto;
-    min-height: 100vh;
   }
   .container-content {
     padding: 1rem 0 !important;
